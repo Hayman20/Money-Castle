@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nt0ls+9C7bdQ/rxSXFWbprpTmsi1eH9/zO5Jky27IGYumBwPI4HEd+VF/7KQ63qD/PviWoSUpkpKh8Av2Skh9w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money Castle\\Money Castle\\Money Castle.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\haydn\\.nuget\\packages\\winforms.datavisualization\\1.9.2\\winforms.datavisualization.1.9.2.nupkg.sha512"
+  ],
+  "logs": []
+}
