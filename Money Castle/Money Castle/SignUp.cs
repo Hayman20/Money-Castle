@@ -31,6 +31,7 @@ namespace Money_Castle
             string user = txtUsername.Text;
             string pass = txtPassword.Text;
             string con = txtConform.Text;
+            string date = DateTime.Now.ToString("dd/MM/yyyy");  
             if (user == "" | pass == "" | con == "")
             {
                 MessageBox.Show("Please fill out all boxes");
@@ -41,7 +42,7 @@ namespace Money_Castle
             }
             else
             {
-                string record = user + "," + pass;
+                string record = user + "," + pass+','+date;
                 using (TextWriter tw = new StreamWriter(path, true))
                 {
                     tw.WriteLine(record);

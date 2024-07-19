@@ -49,7 +49,7 @@ namespace Money_Castle
                 foreach (string line in lines)
                 {
                     string[] users = line.Split(",");
-                    if (users[0] == txtPassword.Text && users[1] == txtUsername.Text)
+                    if ( users[0] == txtUsername.Text && users[1] == txtPassword.Text)
                     {
                         MessageBox.Show("welcome");
                         View form = new View();
