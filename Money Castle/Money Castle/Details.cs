@@ -39,5 +39,12 @@ namespace Money_Castle
             myForm.Show();
             this.Hide();
         }
+
+        private void btnInput_Click(object sender, EventArgs e)
+        {
+            Input myForm = new Input();
+            myForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money Castle\\Money Castle\\Money Castle.csproj": {}
+    "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj": {}
   },
   "projects": {
-    "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money Castle\\Money Castle\\Money Castle.csproj": {
+    "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money Castle\\Money Castle\\Money Castle.csproj",
+        "projectUniqueName": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
         "projectName": "Money Castle",
-        "projectPath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money Castle\\Money Castle\\Money Castle.csproj",
+        "projectPath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
         "packagesPath": "C:\\Users\\haydn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money Castle\\Money Castle\\obj\\",
+        "outputPath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\haydn\\AppData\\Roaming\\NuGet\\NuGet.Config",
