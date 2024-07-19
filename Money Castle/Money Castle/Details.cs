@@ -47,7 +47,12 @@ namespace Money_Castle
             myForm.Show();
             this.Hide();
             myForm.Closed += (s, args) => this.Close();
-           
+
+        }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
