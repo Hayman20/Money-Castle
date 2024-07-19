@@ -36,22 +36,22 @@
             btnDetails = new Button();
             label1 = new Label();
             label2 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dtpDate = new DateTimePicker();
             txtStore = new TextBox();
             txtCost = new TextBox();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            comboBox1 = new ComboBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            button1 = new Button();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
+            txtIncome = new TextBox();
+            txtSavingdes = new TextBox();
+            txtSavingAmont = new TextBox();
+            cmbPercent = new ComboBox();
+            txtDebtDes = new TextBox();
+            txtDebtAmount = new TextBox();
+            txtDebtPaid = new TextBox();
+            btnUpdate = new Button();
+            cmbPeriod = new ComboBox();
+            cmbType = new ComboBox();
             SuspendLayout();
             // 
             // btnLogout
@@ -146,12 +146,15 @@
             label2.TabIndex = 33;
             label2.Text = "Add a Cost:";
             // 
-            // dateTimePicker1
+            // dtpDate
             // 
-            dateTimePicker1.Location = new Point(285, 94);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 27);
-            dateTimePicker1.TabIndex = 34;
+            dtpDate.CustomFormat = "dd/MM/yyyy";
+            dtpDate.ImeMode = ImeMode.Off;
+            dtpDate.Location = new Point(285, 94);
+            dtpDate.Name = "dtpDate";
+            dtpDate.Size = new Size(250, 27);
+            dtpDate.TabIndex = 34;
+            dtpDate.Value = new DateTime(2024, 7, 19, 12, 38, 34, 0);
             // 
             // txtStore
             // 
@@ -199,98 +202,99 @@
             label5.TabIndex = 39;
             label5.Text = "Percent of income in savings:";
             // 
-            // textBox1
+            // txtIncome
             // 
-            textBox1.Location = new Point(253, 30);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Income";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 40;
+            txtIncome.Location = new Point(253, 30);
+            txtIncome.Name = "txtIncome";
+            txtIncome.PlaceholderText = "Income";
+            txtIncome.Size = new Size(125, 27);
+            txtIncome.TabIndex = 40;
             // 
-            // textBox2
+            // txtSavingdes
             // 
-            textBox2.Location = new Point(285, 168);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Description";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 41;
+            txtSavingdes.Location = new Point(285, 168);
+            txtSavingdes.Name = "txtSavingdes";
+            txtSavingdes.PlaceholderText = "Description";
+            txtSavingdes.Size = new Size(125, 27);
+            txtSavingdes.TabIndex = 41;
             // 
-            // textBox3
+            // txtSavingAmont
             // 
-            textBox3.Location = new Point(416, 168);
-            textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = "Amount";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 42;
+            txtSavingAmont.Location = new Point(416, 168);
+            txtSavingAmont.Name = "txtSavingAmont";
+            txtSavingAmont.PlaceholderText = "Amount";
+            txtSavingAmont.Size = new Size(125, 27);
+            txtSavingAmont.TabIndex = 42;
             // 
-            // comboBox1
+            // cmbPercent
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100" });
-            comboBox1.Location = new Point(416, 222);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 43;
+            cmbPercent.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPercent.FormattingEnabled = true;
+            cmbPercent.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100" });
+            cmbPercent.Location = new Point(416, 222);
+            cmbPercent.Name = "cmbPercent";
+            cmbPercent.Size = new Size(151, 28);
+            cmbPercent.TabIndex = 43;
             // 
-            // textBox4
+            // txtDebtDes
             // 
-            textBox4.Location = new Point(275, 275);
-            textBox4.Name = "textBox4";
-            textBox4.PlaceholderText = "Description";
-            textBox4.Size = new Size(103, 27);
-            textBox4.TabIndex = 44;
+            txtDebtDes.Location = new Point(275, 275);
+            txtDebtDes.Name = "txtDebtDes";
+            txtDebtDes.PlaceholderText = "Description";
+            txtDebtDes.Size = new Size(103, 27);
+            txtDebtDes.TabIndex = 44;
             // 
-            // textBox5
+            // txtDebtAmount
             // 
-            textBox5.Location = new Point(384, 275);
-            textBox5.Name = "textBox5";
-            textBox5.PlaceholderText = "Amount";
-            textBox5.Size = new Size(88, 27);
-            textBox5.TabIndex = 45;
+            txtDebtAmount.Location = new Point(384, 275);
+            txtDebtAmount.Name = "txtDebtAmount";
+            txtDebtAmount.PlaceholderText = "Amount";
+            txtDebtAmount.Size = new Size(88, 27);
+            txtDebtAmount.TabIndex = 45;
             // 
-            // textBox6
+            // txtDebtPaid
             // 
-            textBox6.Location = new Point(479, 275);
-            textBox6.Name = "textBox6";
-            textBox6.PlaceholderText = "Amount Paid off";
-            textBox6.Size = new Size(121, 27);
-            textBox6.TabIndex = 46;
+            txtDebtPaid.Location = new Point(479, 275);
+            txtDebtPaid.Name = "txtDebtPaid";
+            txtDebtPaid.PlaceholderText = "Amount Paid off";
+            txtDebtPaid.Size = new Size(121, 27);
+            txtDebtPaid.TabIndex = 46;
             // 
-            // button1
+            // btnUpdate
             // 
-            button1.BackColor = SystemColors.ActiveCaptionText;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Image = Properties.Resources.upgrade_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(347, 362);
-            button1.Name = "button1";
-            button1.Size = new Size(167, 56);
-            button1.TabIndex = 47;
-            button1.Text = "Update FIle";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = false;
+            btnUpdate.BackColor = SystemColors.ActiveCaptionText;
+            btnUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdate.ForeColor = SystemColors.ControlLightLight;
+            btnUpdate.Image = Properties.Resources.upgrade_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            btnUpdate.ImageAlign = ContentAlignment.MiddleRight;
+            btnUpdate.Location = new Point(347, 362);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(167, 56);
+            btnUpdate.TabIndex = 47;
+            btnUpdate.Text = "Update FIle";
+            btnUpdate.TextAlign = ContentAlignment.MiddleLeft;
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
-            // comboBox2
+            // cmbPeriod
             // 
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Daily ", "Weekly", "Fortnightly ", "Mouthly", "Yearly" });
-            comboBox2.Location = new Point(384, 29);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(151, 28);
-            comboBox2.TabIndex = 48;
+            cmbPeriod.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPeriod.FormattingEnabled = true;
+            cmbPeriod.Items.AddRange(new object[] { "Daily ", "Weekly", "Fortnightly ", "Mouthly", "Yearly" });
+            cmbPeriod.Location = new Point(384, 29);
+            cmbPeriod.Name = "cmbPeriod";
+            cmbPeriod.Size = new Size(151, 28);
+            cmbPeriod.TabIndex = 48;
             // 
-            // comboBox3
+            // cmbType
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Food", "Bills ", "Entertainment", "Other" });
-            comboBox3.Location = new Point(803, 92);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(111, 28);
-            comboBox3.TabIndex = 49;
-            comboBox3.Text = "Type";
+            cmbType.FormattingEnabled = true;
+            cmbType.Items.AddRange(new object[] { "Food", "Bills ", "Entertainment", "Other" });
+            cmbType.Location = new Point(803, 92);
+            cmbType.Name = "cmbType";
+            cmbType.Size = new Size(111, 28);
+            cmbType.TabIndex = 49;
+            cmbType.Text = "Type";
             // 
             // Input
             // 
@@ -298,22 +302,22 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(939, 492);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox2);
-            Controls.Add(button1);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(cmbType);
+            Controls.Add(cmbPeriod);
+            Controls.Add(btnUpdate);
+            Controls.Add(txtDebtPaid);
+            Controls.Add(txtDebtAmount);
+            Controls.Add(txtDebtDes);
+            Controls.Add(cmbPercent);
+            Controls.Add(txtSavingAmont);
+            Controls.Add(txtSavingdes);
+            Controls.Add(txtIncome);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(txtCost);
             Controls.Add(txtStore);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dtpDate);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnLogout);
@@ -340,21 +344,21 @@
         private Button btnDetails;
         private Label label1;
         private Label label2;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpDate;
         private TextBox txtStore;
         private TextBox txtCost;
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private ComboBox comboBox1;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private Button button1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
+        private TextBox txtIncome;
+        private TextBox txtSavingdes;
+        private TextBox txtSavingAmont;
+        private ComboBox cmbPercent;
+        private TextBox txtDebtDes;
+        private TextBox txtDebtAmount;
+        private TextBox txtDebtPaid;
+        private Button btnUpdate;
+        private ComboBox cmbPeriod;
+        private ComboBox cmbType;
     }
 }
