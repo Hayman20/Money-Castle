@@ -16,5 +16,11 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
+        public string UserDetail = "Details.txt";
+        public string Costs = "Costs.txt";
+        private void Input_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

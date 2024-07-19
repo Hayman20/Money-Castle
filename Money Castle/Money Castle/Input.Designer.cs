@@ -45,6 +45,13 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
+            comboBox1 = new ComboBox();
+            textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            textBox6 = new TextBox();
+            button1 = new Button();
+            comboBox2 = new ComboBox();
+            comboBox3 = new ComboBox();
             SuspendLayout();
             // 
             // btnLogout
@@ -216,12 +223,88 @@
             textBox3.Size = new Size(125, 27);
             textBox3.TabIndex = 42;
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100" });
+            comboBox1.Location = new Point(416, 222);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 43;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(275, 275);
+            textBox4.Name = "textBox4";
+            textBox4.PlaceholderText = "Description";
+            textBox4.Size = new Size(103, 27);
+            textBox4.TabIndex = 44;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(384, 275);
+            textBox5.Name = "textBox5";
+            textBox5.PlaceholderText = "Amount";
+            textBox5.Size = new Size(88, 27);
+            textBox5.TabIndex = 45;
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(479, 275);
+            textBox6.Name = "textBox6";
+            textBox6.PlaceholderText = "Amount Paid off";
+            textBox6.Size = new Size(121, 27);
+            textBox6.TabIndex = 46;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ActiveCaptionText;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Image = Properties.Resources.upgrade_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(347, 362);
+            button1.Name = "button1";
+            button1.Size = new Size(167, 56);
+            button1.TabIndex = 47;
+            button1.Text = "Update FIle";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // comboBox2
+            // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Daily ", "Weekly", "Fortnightly ", "Mouthly", "Yearly" });
+            comboBox2.Location = new Point(384, 29);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(151, 28);
+            comboBox2.TabIndex = 48;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "Food", "Bills ", "Entertainment", "Other" });
+            comboBox3.Location = new Point(803, 92);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(111, 28);
+            comboBox3.TabIndex = 49;
+            comboBox3.Text = "Type";
+            // 
             // Input
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(939, 492);
+            Controls.Add(comboBox3);
+            Controls.Add(comboBox2);
+            Controls.Add(button1);
+            Controls.Add(textBox6);
+            Controls.Add(textBox5);
+            Controls.Add(textBox4);
+            Controls.Add(comboBox1);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
@@ -242,6 +325,7 @@
             ForeColor = SystemColors.ControlLightLight;
             Name = "Input";
             Text = "Input";
+            Load += Input_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -265,5 +349,12 @@
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;
+        private ComboBox comboBox1;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private TextBox textBox6;
+        private Button button1;
+        private ComboBox comboBox2;
+        private ComboBox comboBox3;
     }
 }

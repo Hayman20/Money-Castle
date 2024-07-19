@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,6 +46,8 @@ namespace Money_Castle
             Input myForm = new Input();
             myForm.Show();
             this.Hide();
+            myForm.Closed += (s, args) => this.Close();
+           
         }
     }
 }
