@@ -36,14 +36,8 @@ namespace Money_Castle
         private void pictureBox2_Click(object sender, EventArgs e)
         {
         }
-        void open() 
-        {
-            Page form = new Page();
-            form.Show();
-            this.Hide();
-            form.Closed += (s, args) => this.Close();
-
-        }
+       
+        
 
         private void btnLogin_Click(object sender, EventArgs e)
         {

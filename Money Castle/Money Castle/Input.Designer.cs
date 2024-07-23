@@ -280,7 +280,7 @@
             // 
             cmbPeriod.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPeriod.FormattingEnabled = true;
-            cmbPeriod.Items.AddRange(new object[] { "Daily ", "Weekly", "Fortnightly ", "Mouthly", "Yearly" });
+            cmbPeriod.Items.AddRange(new object[] { "Weekly", "Fortnightly ", "Mouthly", "Yearly" });
             cmbPeriod.Location = new Point(384, 29);
             cmbPeriod.Name = "cmbPeriod";
             cmbPeriod.Size = new Size(151, 28);
