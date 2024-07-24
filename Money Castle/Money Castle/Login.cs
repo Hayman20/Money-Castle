@@ -76,8 +76,10 @@ namespace Money_Castle
                         UserDetailPath = users[3]+ "Details.txt";
                         CostsPath = users[3] + "Costs.txt";
                         view = new View();
-                        input = new Input();
-                        
+                        view.Show();
+                        Login.view.Closed += (s, args) => this.Close();
+
+
 
                         break;
                         

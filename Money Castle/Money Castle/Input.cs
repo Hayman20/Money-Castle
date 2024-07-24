@@ -65,7 +65,7 @@ namespace Money_Castle
                 MessageBox.Show("Please fill all boxes");
             }
             // checks if some of the inputs are only numbers 
-            else if (!float.TryParse(income, out float test) | !float.TryParse(cost, out float test1) | !float.TryParse(savingAmount, out float test2) | !float.TryParse(debtAmount, out float test3) | !float.TryParse(debtPaid, out float test4))
+            else if (!float.TryParse(income, out float test) | !float.TryParse(savingAmount, out float test2) | !float.TryParse(debtAmount, out float test3) | !float.TryParse(debtPaid, out float test4))
 
             {
                 MessageBox.Show("please only use numbers for income/cost/savings/debts");
@@ -73,11 +73,17 @@ namespace Money_Castle
             // once every thing is correct it will save it to two files 
             else
             {   // adds a entry to the costs of the user
-                using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
-                {
-                    tw.WriteLine(costs);
-                    MessageBox.Show("File created");
-                    tw.Close();
+                if (cost != "Cost" | store != "Store" | type != "Type")
+                {   if (float.TryParse(cost, out float test10))
+                    {
+                        using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
+                        {
+                            tw.WriteLine(costs);
+                            MessageBox.Show("File created");
+                            tw.Close();
+                        }
+                    }
+                    else { MessageBox.Show("please use numbers for cost"); }
                 }
                 // if the userDetail file doesn't exist it will create one and save all the data to it
                 if (!File.Exists(Login.UserDetailPath))

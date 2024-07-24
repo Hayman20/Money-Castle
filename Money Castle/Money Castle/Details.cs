@@ -17,7 +17,7 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
-        
+
 
         private void chtCostvsGross_Click(object sender, EventArgs e)
         {
@@ -37,7 +37,7 @@ namespace Money_Castle
            $120,001 – $180,000	$29,467 plus 37c for each $1 over $120,000
            $180,001 and over	$51,667 plus 45c for each $1 over $180,000
            */
-            if (income < 45000)
+            if (income>182001&&income < 45000)
             {
                 tax = (income - 18200) * 0.19f;
 
@@ -60,8 +60,7 @@ namespace Money_Castle
             return tax;
 
         }
-
-        private void View_Load(object sender, EventArgs e)
+        public void reload() 
         {
             if (File.Exists(Login.UserDetailPath))
             {
@@ -93,25 +92,31 @@ namespace Money_Castle
                     case "Yearly":
                         total = income * 1;
                         lblTax.Text = Math.Round(tax(total)).ToString();
-                        lblNet.Text = Math.Round(total - tax(total)).ToString();
+                        lblNet.Text = Math.Round((total - tax(total))).ToString();
                         break;
                 }
 
 
 
             }
+
+        }
+
+        private void View_Load(object sender, EventArgs e)
+        {
+            reload();
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {   
-            Raw_data  myForm = new Raw_data();
+        {
+            Raw_data myForm = new Raw_data();
             myForm.Show();
             this.Hide();
         }
 
         private void btnInput_Click(object sender, EventArgs e)
         {
-            
+
             Login.input.Show();
             Login.view.Hide();
             Login.input.Closed += (s, args) => this.Close();
@@ -131,6 +136,11 @@ namespace Money_Castle
         private void chtTotal_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            reload();
         }
     }
 }
