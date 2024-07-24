@@ -19,13 +19,12 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
-        public string UserDetailPath = "Details.txt";
-        public string CostsPath = "Costs.txt";
+       
         private void Input_Load(object sender, EventArgs e)
         {
-            if (File.Exists(UserDetailPath))
+            if (File.Exists(Login.UserDetailPath))
             {
-                string[] line = File.ReadAllLines(UserDetailPath);
+                string[] line = File.ReadAllLines(Login.UserDetailPath);
                 string[] lines = line[0].Split(',');
                 txtIncome.Text = lines[0];
                 cmbPeriod.Text = lines[1];
@@ -74,16 +73,16 @@ namespace Money_Castle
             // once every thing is correct it will save it to two files 
             else
             {   // adds a entry to the costs of the user
-                using (TextWriter tw = new StreamWriter(CostsPath, true))
+                using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
                 {
                     tw.WriteLine(costs);
                     MessageBox.Show("File created");
                     tw.Close();
                 }
                 // if the userDetail file doesn't exist it will create one and save all the data to it
-                if (!File.Exists(UserDetailPath))
+                if (!File.Exists(Login.UserDetailPath))
                 {
-                    using (TextWriter tw = new StreamWriter(UserDetailPath, true))
+                    using (TextWriter tw = new StreamWriter(Login.UserDetailPath, true))
                     {
                         tw.WriteLine(userDetils);
                         MessageBox.Show("File created");
@@ -93,9 +92,9 @@ namespace Money_Castle
                 // if the file does exist it will replace all the info with new inputted info
                 else
                 {
-                    string[] lines = File.ReadAllLines(UserDetailPath);
+                    string[] lines = File.ReadAllLines(Login.UserDetailPath);
                     lines[0] = userDetils;
-                    File.WriteAllLines(UserDetailPath, lines);
+                    File.WriteAllLines(Login.UserDetailPath, lines);
                     MessageBox.Show("File updated");
                 }
 

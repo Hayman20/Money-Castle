@@ -53,3 +53,33 @@ C:\Users\haydn\OneDrive\Documents\school work\year 12\computer\SAT\Development\M
 C:\Users\haydn\OneDrive\Documents\school work\year 12\computer\SAT\Development\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.pdb
 C:\Users\haydn\OneDrive\Documents\school work\year 12\computer\SAT\Development\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.genruntimeconfig.cache
 C:\Users\haydn\OneDrive\Documents\school work\year 12\computer\SAT\Development\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\ref\Money Castle.dll
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\bin\Debug\net7.0-windows\Money Castle.exe
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\bin\Debug\net7.0-windows\Money Castle.deps.json
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\bin\Debug\net7.0-windows\Money Castle.runtimeconfig.json
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\bin\Debug\net7.0-windows\Money Castle.dll
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\bin\Debug\net7.0-windows\Money Castle.pdb
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\bin\Debug\net7.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\bin\Debug\net7.0-windows\WinForms.DataVisualization.dll
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Change.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.View.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Help.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Input.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Login.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Properties.Resources.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Raw_data.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Settings.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.Sign_up.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money_Castle.User.resources
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.csproj.GenerateResource.cache
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.AssemblyInfo.cs
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.sourcelink.json
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Ca.B989EDAA.Up2Date
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.dll
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\refint\Money Castle.dll
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.pdb
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\Money Castle.genruntimeconfig.cache
+C:\Users\User\OneDrive\Documents\GitHub\Money-Castle\Money Castle\Money Castle\obj\Debug\net7.0-windows\ref\Money Castle.dll

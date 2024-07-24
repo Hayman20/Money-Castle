@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace Money_Castle
 {
@@ -31,8 +32,36 @@ namespace Money_Castle
             string user = txtUsername.Text;
             string pass = txtPassword.Text;
             string con = txtConform.Text;
+            bool exists = false;
             string date = DateTime.Now.ToString("dd/MM/yyyy");  
-            if (user == "" | pass == "" | con == "")
+            Random rand = new Random();
+            string user_id = (rand.Next(0,9999)*rand.Next(0,9999)/rand.Next(0,10000)).ToString();
+            if (File.Exists(path))
+            {
+                string[] lines = File.ReadAllLines(path);
+                foreach (string line in lines)
+                {
+                    string[] users = line.Split(",");
+                    if (users[0] == txtUsername.Text)
+                    {
+
+                        exists = true;
+
+                    }
+                    if (users[3] == user_id)
+                    {
+                        user_id = (rand.Next(0, 9999) * rand.Next(0, 9999) / rand.Next(0, 10000)).ToString();
+                    }
+
+
+                }
+            }
+            if (exists==true) 
+            {
+                MessageBox.Show("same");
+
+            }
+            else if (user == "" | pass == "" | con == "")
             {
                 MessageBox.Show("Please fill out all boxes");
             }
@@ -42,7 +71,7 @@ namespace Money_Castle
             }
             else
             {
-                string record = user + "," + pass+','+date;
+                string record = user + "," + pass + ',' + date + "," + user_id;
                 using (TextWriter tw = new StreamWriter(path, true))
                 {
                     tw.WriteLine(record);

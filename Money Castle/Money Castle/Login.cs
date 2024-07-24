@@ -16,15 +16,20 @@ namespace Money_Castle
 {
     public partial class Login : Form
     {
-        public static View view = new View();
+        public static View view;
         public static Input input= new Input();
         public static Login login= new Login();
         public static Raw_data raw_Data= new Raw_data();
         public static Settings settings = new Settings();
         public static User use= new User();
         public static Help help=new Help();
-        public static Change change=new Change();
-    
+        public static Change change = new Change();
+        public static string ID;
+        public static string UserDetailPath;
+        public static string CostsPath;
+        
+
+
         public static string path = "User.txt";
         public Login()
         {
@@ -63,12 +68,19 @@ namespace Money_Castle
                     if ( users[0] == txtUsername.Text && users[1] == txtPassword.Text)
                     {
                         MessageBox.Show("welcome");
-                      
-                        view.Show();
+                        
+                        
                         this.Hide();
-                        view.Closed += (s, args) => this.Close();
                         match = true;
+                        ID = users[3];
+                        UserDetailPath = users[3]+ "Details.txt";
+                        CostsPath = users[3] + "Costs.txt";
+                        view = new View();
+                        input = new Input();
+                        view.Closed += (s, args) => this.Close();
+
                         break;
+                        
                     }
                    
 

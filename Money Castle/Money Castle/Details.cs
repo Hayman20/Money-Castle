@@ -17,8 +17,7 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
-        public string UserDetailPath = "Details.txt";
-        public string CostsPath = "Costs.txt";
+        
 
         private void chtCostvsGross_Click(object sender, EventArgs e)
         {
@@ -64,41 +63,43 @@ namespace Money_Castle
 
         private void View_Load(object sender, EventArgs e)
         {
-
-            string[] line = File.ReadAllLines(UserDetailPath);
-            string[] lines = line[0].Split(',');
-
-            lblIncome.Text = lines[0] + " " + lines[1];
-            float income = float.Parse(lines[0]);
-            float total;
-
-
-            switch (lines[1])
+            if (File.Exists(Login.UserDetailPath))
             {
-                case "Weekly":
-                    total = income * 55;
-                    lblTax.Text = Math.Round(tax(total)).ToString();
-                    lblNet.Text = Math.Round(total - tax(total)).ToString();
-                    break;
-                case "Fortnightly":
-                    total = income * 26;
-                    lblTax.Text = Math.Round(tax(total)).ToString();
-                    lblNet.Text = Math.Round(total - tax(total)).ToString();
-                    break;
-                case "Mouthly":
-                    total = income * 12;
-                    lblTax.Text = Math.Round(tax(total)).ToString();
-                    lblNet.Text = Math.Round(total - tax(total)).ToString();
-                    break;
-                case "Yearly":
-                    total = income * 1;
-                    lblTax.Text = Math.Round(tax(total)).ToString();
-                    lblNet.Text = Math.Round(total - tax(total)).ToString();
-                    break;
+                string[] line = File.ReadAllLines(Login.UserDetailPath);
+                string[] lines = line[0].Split(',');
+
+                lblIncome.Text = lines[0] + " " + lines[1];
+                float income = float.Parse(lines[0]);
+                float total;
+
+
+                switch (lines[1])
+                {
+                    case "Weekly":
+                        total = income * 55;
+                        lblTax.Text = Math.Round(tax(total)).ToString();
+                        lblNet.Text = Math.Round(total - tax(total)).ToString();
+                        break;
+                    case "Fortnightly":
+                        total = income * 26;
+                        lblTax.Text = Math.Round(tax(total)).ToString();
+                        lblNet.Text = Math.Round(total - tax(total)).ToString();
+                        break;
+                    case "Mouthly":
+                        total = income * 12;
+                        lblTax.Text = Math.Round(tax(total)).ToString();
+                        lblNet.Text = Math.Round(total - tax(total)).ToString();
+                        break;
+                    case "Yearly":
+                        total = income * 1;
+                        lblTax.Text = Math.Round(tax(total)).ToString();
+                        lblNet.Text = Math.Round(total - tax(total)).ToString();
+                        break;
+                }
+
+
+
             }
-
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
