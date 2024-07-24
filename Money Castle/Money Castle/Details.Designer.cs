@@ -52,6 +52,8 @@
             btnUser = new Button();
             btnInput = new Button();
             btnDetails = new Button();
+            label3 = new Label();
+            lblNet = new Label();
             ((System.ComponentModel.ISupportInitialize)chtDebt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chtCost).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chtTotal).BeginInit();
@@ -71,11 +73,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(343, 76);
+            label2.Location = new Point(471, 76);
             label2.Name = "label2";
-            label2.Size = new Size(239, 41);
+            label2.Size = new Size(124, 41);
             label2.TabIndex = 4;
-            label2.Text = "Income after tax:";
+            label2.Text = "Income:";
             // 
             // lblIncome
             // 
@@ -119,7 +121,7 @@
             chtDebt.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chtDebt.Legends.Add(legend1);
-            chtDebt.Location = new Point(178, 133);
+            chtDebt.Location = new Point(175, 184);
             chtDebt.Name = "chtDebt";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -135,7 +137,7 @@
             chtCost.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             chtCost.Legends.Add(legend2);
-            chtCost.Location = new Point(500, 133);
+            chtCost.Location = new Point(504, 184);
             chtCost.Name = "chtCost";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
@@ -144,6 +146,7 @@
             chtCost.Size = new Size(302, 226);
             chtCost.TabIndex = 15;
             chtCost.Text = "chart2";
+            chtCost.Click += chtCost_Click;
             // 
             // chtTotal
             // 
@@ -151,7 +154,7 @@
             chtTotal.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             chtTotal.Legends.Add(legend3);
-            chtTotal.Location = new Point(826, 133);
+            chtTotal.Location = new Point(823, 184);
             chtTotal.Name = "chtTotal";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
@@ -160,6 +163,7 @@
             chtTotal.Size = new Size(302, 226);
             chtTotal.TabIndex = 16;
             chtTotal.Text = "chart3";
+            chtTotal.Click += chtTotal_Click;
             // 
             // btnLogout
             // 
@@ -235,12 +239,34 @@
             btnDetails.UseVisualStyleBackColor = false;
             btnDetails.Click += btnDetails_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(416, 132);
+            label3.Name = "label3";
+            label3.Size = new Size(179, 41);
+            label3.TabIndex = 26;
+            label3.Text = "Net income:";
+            // 
+            // lblNet
+            // 
+            lblNet.AutoSize = true;
+            lblNet.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNet.Location = new Point(590, 132);
+            lblNet.Name = "lblNet";
+            lblNet.Size = new Size(172, 41);
+            lblNet.TabIndex = 27;
+            lblNet.Text = "Net income";
+            // 
             // View
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlText;
             ClientSize = new Size(1182, 501);
+            Controls.Add(lblNet);
+            Controls.Add(label3);
             Controls.Add(btnLogout);
             Controls.Add(btnSetting);
             Controls.Add(btnHelp);
@@ -284,5 +310,7 @@
         private Button btnUser;
         private Button btnInput;
         private Button btnDetails;
+        private Label label3;
+        private Label lblNet;
     }
 }

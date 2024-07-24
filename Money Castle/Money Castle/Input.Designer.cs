@@ -125,6 +125,7 @@
             btnDetails.Text = "Details";
             btnDetails.TextAlign = ContentAlignment.MiddleLeft;
             btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.Click += btnDetails_Click;
             // 
             // label1
             // 

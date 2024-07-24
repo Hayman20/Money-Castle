@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Money_Castle
 {
+    
     public partial class Input : Form
     {
         public Input()
@@ -99,6 +100,16 @@ namespace Money_Castle
                 }
 
             }
+        }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            Login.view.Refresh();
+            
+            Login.view.Show();
+            
+            Login.input.Hide();
+
         }
     }
 }
