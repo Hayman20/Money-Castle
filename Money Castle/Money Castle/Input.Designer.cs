@@ -289,13 +289,13 @@
             // 
             // cmbType
             // 
+            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbType.FormattingEnabled = true;
             cmbType.Items.AddRange(new object[] { "Food", "Bills ", "Entertainment", "Other" });
             cmbType.Location = new Point(803, 92);
             cmbType.Name = "cmbType";
             cmbType.Size = new Size(111, 28);
             cmbType.TabIndex = 49;
-            cmbType.Text = "Type";
             // 
             // Input
             // 

@@ -106,6 +106,11 @@ namespace Money_Castle
         private void View_Load(object sender, EventArgs e)
         {
             reload();
+            string[] months = { "June", "may" };
+            int[] num = { 1, 2, 3 };
+            chtCost.Series[1].Points.DataBindXY(months,num);
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)

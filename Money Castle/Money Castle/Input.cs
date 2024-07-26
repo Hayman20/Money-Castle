@@ -13,14 +13,14 @@ using System.Windows.Forms;
 
 namespace Money_Castle
 {
-    
+
     public partial class Input : Form
     {
         public Input()
         {
             InitializeComponent();
         }
-       
+
         private void Input_Load(object sender, EventArgs e)
         {
             if (File.Exists(Login.UserDetailPath))
@@ -75,7 +75,8 @@ namespace Money_Castle
             else
             {   // adds a entry to the costs of the user
                 if (cost != "Cost" | store != "Store" | type != "Type")
-                {   if (float.TryParse(cost, out float test10))
+                {
+                    if (float.TryParse(cost, out float test10))
                     {
                         using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
                         {
@@ -104,30 +105,21 @@ namespace Money_Castle
                     File.WriteAllLines(Login.UserDetailPath, lines);
                     MessageBox.Show("File updated");
                 }
-               /* 
+
                 string[] Allcosts = File.ReadAllLines(Login.CostsPath);
-                for(int j=0; j<Allcosts.Length;j++) 
-                { 
-                    string[] date1 = Allcosts[j].Split(',');
-                    string[] date2 = Allcosts[j+1].Split(",");
-                    for (int i=0; i < Allcosts.Length; i++)
-                    {
-                        if (DateTime.Parse(date1[0]) > DateTime.Parse(date2[0])) 
-                        {
-                            (date1, date2) = (date2, date1);
-                        }
-                    }
-                }
-               */
+                Array.Sort(Allcosts);
+                File.Delete(Login.CostsPath);
+                File.WriteAllLines(Login.CostsPath, Allcosts);
+
             }
         }
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
             Login.view.Refresh();
-            
+
             Login.view.Show();
-            
+
             Login.input.Hide();
 
         }
