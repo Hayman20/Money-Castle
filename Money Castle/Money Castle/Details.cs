@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization;
 
 namespace Money_Castle
 {
@@ -37,7 +38,7 @@ namespace Money_Castle
            $120,001 – $180,000	$29,467 plus 37c for each $1 over $120,000
            $180,001 and over	$51,667 plus 45c for each $1 over $180,000
            */
-            if (income>182001&&income < 45000)
+            if (income > 182001 && income < 45000)
             {
                 tax = (income - 18200) * 0.19f;
 
@@ -60,7 +61,7 @@ namespace Money_Castle
             return tax;
 
         }
-        public void reload() 
+        public void reload()
         {
             if (File.Exists(Login.UserDetailPath))
             {
@@ -141,6 +142,11 @@ namespace Money_Castle
         private void btnReload_Click(object sender, EventArgs e)
         {
             reload();
+        }
+
+        private void chtDebt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

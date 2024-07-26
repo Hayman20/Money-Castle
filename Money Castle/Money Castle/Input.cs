@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -103,7 +104,21 @@ namespace Money_Castle
                     File.WriteAllLines(Login.UserDetailPath, lines);
                     MessageBox.Show("File updated");
                 }
-
+               /* 
+                string[] Allcosts = File.ReadAllLines(Login.CostsPath);
+                for(int j=0; j<Allcosts.Length;j++) 
+                { 
+                    string[] date1 = Allcosts[j].Split(',');
+                    string[] date2 = Allcosts[j+1].Split(",");
+                    for (int i=0; i < Allcosts.Length; i++)
+                    {
+                        if (DateTime.Parse(date1[0]) > DateTime.Parse(date2[0])) 
+                        {
+                            (date1, date2) = (date2, date1);
+                        }
+                    }
+                }
+               */
             }
         }
 

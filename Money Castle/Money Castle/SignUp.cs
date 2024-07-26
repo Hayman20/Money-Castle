@@ -34,13 +34,13 @@ namespace Money_Castle
             string con = txtConform.Text;
             bool exists = false;
             string date = DateTime.Now.ToString("dd/MM/yyyy");  
-            Random rand = new Random();
-            string user_id = (rand.Next(0,9999)*rand.Next(0,9999)/rand.Next(0,10000)).ToString();
+            int user_id=1;
             if (File.Exists(path))
             {
                 string[] lines = File.ReadAllLines(path);
                 foreach (string line in lines)
                 {
+                    user_id++;
                     string[] users = line.Split(",");
                     if (users[0] == txtUsername.Text)
                     {
@@ -48,10 +48,7 @@ namespace Money_Castle
                         exists = true;
 
                     }
-                    if (users[3] == user_id)
-                    {
-                        user_id = (rand.Next(0, 9999) * rand.Next(0, 9999) / rand.Next(0, 10000)).ToString();
-                    }
+                  
 
 
                 }

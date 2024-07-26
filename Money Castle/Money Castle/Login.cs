@@ -58,8 +58,12 @@ namespace Money_Castle
             string pass = txtPassword.Text;
             string user = txtUsername.Text;
             bool match= false;
-
-            if (File.Exists(path))
+            if (user == "" | pass == "") 
+            {
+                MessageBox.Show("please enter a password and username.");
+            }
+            
+            else if (File.Exists(path))
             {
                 string[] lines = File.ReadAllLines(path);
                 foreach (string line in lines)
