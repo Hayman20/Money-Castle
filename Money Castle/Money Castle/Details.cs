@@ -9,6 +9,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Linq;
 
 namespace Money_Castle
 {
@@ -18,6 +20,7 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
+       public double monthly;
 
 
         private void chtCostvsGross_Click(object sender, EventArgs e)
@@ -77,21 +80,28 @@ namespace Money_Castle
                 {
                     case "Weekly":
                         total = income * 55;
+                        monthly = income / 12;
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Fortnightly":
                         total = income * 26;
+                        monthly = income / 12;
+
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Mouthly":
                         total = income * 12;
+                        monthly = income / 12;
+
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Yearly":
                         total = income * 1;
+                        monthly = income / 12;
+
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round((total - tax(total))).ToString();
                         break;
@@ -103,12 +113,68 @@ namespace Money_Castle
 
         }
 
+        private void Graph(string seriesName,string[] x, double[] y, Chart graph, Color colour) 
+        {
+            
+
+            // Create a new Series and set its properties
+            Series series = new Series(seriesName)
+            {
+                
+                Color = colour,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Bar
+            };
+
+
+
+            // Clear any existing series
+            // Add the new series to the chart
+            graph.Series.Add(series);
+            series.Points.DataBindXY(x, y);
+            Legend legend = new Legend("MainLegend")
+            {
+                Docking = Docking.Top, // Position the legend
+                Alignment = StringAlignment.Center, // Center the legend title
+                LegendStyle = LegendStyle.Row, // Arrange the items in a row
+                IsDockedInsideChartArea = false // Dock the legend outside the chart area
+            };
+            try
+            {
+                graph.Legends.Add(legend);
+                legend.BackColor = System.Drawing.Color.LightGray;
+            }
+            catch { }
+
+
+        }
+
         private void View_Load(object sender, EventArgs e)
         {
+            string[] months =
+            {
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            }; // X-values
+            double[] values = { 1, 2, 5, 3,1,1,1,1,1,1,1,1 }; // Y-values
             reload();
-            string[] months = { "June", "may" };
-            int[] num = { 1, 2, 3 };
-            chtCost.Series[1].Points.DataBindXY(months,num);
+            // Customize the chart area
+            ChartArea chartArea = new ChartArea
+            {
+                Name = "MainChartArea"
+            };
+            chtCost.ChartAreas.Add(chartArea);
+
+            //Adds titles
+
+            double[] y = { monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly };
+                Graph("Series1",months, y, chtCost,Color.Blue);
+            Graph("Series2", months, values, chtCost, Color.Red);
+
+
+
+
 
 
         }

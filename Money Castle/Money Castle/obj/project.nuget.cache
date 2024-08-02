@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "kyV9DW/v2Qvxyw/BPHrrKLd4hFDik8xlKjBg7qmBYky2eJXb47MgPP3ngL+q1bPV+SXgJG33pW9NHvUFzktDHQ==",
+  "dgSpecHash": "JcCfvOOn/G0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
+  "projectFilePath": "C:\\Users\\User\\OneDrive\\Documents\\GitHub\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\haydn\\.nuget\\packages\\winforms.datavisualization\\1.9.2\\winforms.datavisualization.1.9.2.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\winforms.datavisualization\\1.9.2\\winforms.datavisualization.1.9.2.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.20\\microsoft.netcore.app.host.win-x64.7.0.20.nupkg.sha512"
   ],
   "logs": []
 }
