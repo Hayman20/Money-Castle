@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Money_Castle
 {
@@ -21,7 +23,7 @@ namespace Money_Castle
             InitializeComponent();
         }
        public double monthly;
-
+        
 
         private void chtCostvsGross_Click(object sender, EventArgs e)
         {
@@ -80,27 +82,27 @@ namespace Money_Castle
                 {
                     case "Weekly":
                         total = income * 55;
-                        monthly = income / 12;
+                        monthly = total / 12;
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Fortnightly":
                         total = income * 26;
-                        monthly = income / 12;
+                        monthly = total/12 ;
 
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Mouthly":
                         total = income * 12;
-                        monthly = income / 12;
+                        monthly = total / 12;
 
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Yearly":
                         total = income * 1;
-                        monthly = income / 12;
+                        monthly = total / 12;
 
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round((total - tax(total))).ToString();
@@ -149,33 +151,81 @@ namespace Money_Castle
 
 
         }
+        class MonthlyTotal
+        {
+            public string Month { get; set; }
+            public float TotalCost { get; set; }
+        }
 
         private void View_Load(object sender, EventArgs e)
         {
+            reload();
+
+            var costMonth = new List<string> { };
+            var costTotal = new List<double>();
+            var grossTotal  = new List<double>();
             string[] months =
             {
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             }; // X-values
-            double[] values = { 1, 2, 5, 3,1,1,1,1,1,1,1,1 }; // Y-values
-            reload();
+            double[] values = { 100, 200, 53, 35,100,100,100,100,100,100,100,100 }; // Y-values
+          
             // Customize the chart area
             ChartArea chartArea = new ChartArea
             {
                 Name = "MainChartArea"
             };
             chtCost.ChartAreas.Add(chartArea);
+            List<MonthlyTotal> monthlyTotals = new List<MonthlyTotal>();
 
             //Adds titles
+            using (StreamReader sr = new StreamReader(Login.CostsPath))
+            {
+                string line;
 
+                // Read the file line by line
+                while ((line = sr.ReadLine()) != null)
+                {   
+                    var items = line.Split(',');
+                    DateTime date = DateTime.Parse(items[0]);
+                    float cost = float.Parse(items[2]);
+                    string monthKey = date.ToString("yyyy-MM");
+
+                    MonthlyTotal monthlyTotal = monthlyTotals.Find(mt => mt.Month == monthKey);
+                    if (monthlyTotal != null)
+                    {
+                        // Add cost to the existing entry
+                        monthlyTotal.TotalCost += cost;
+                    }
+                    else
+                    {
+                        // Create a new entry for the month
+                        monthlyTotals.Add(new MonthlyTotal { Month = monthKey, TotalCost = cost });
+                    }
+                    
+
+                }
+                foreach (var monthlyTotal in monthlyTotals)
+                {
+                    costMonth.Add( monthlyTotal.Month);
+                    costTotal.Add(monthlyTotal.TotalCost);
+                    grossTotal.Add(monthly-monthlyTotal.TotalCost);
+                }
+                string[] asd = costMonth.ToArray();
+                double[] ew = costTotal.ToArray();
+                double[] fuck = grossTotal.ToArray();
+                Graph("cost", asd, ew, chtCost, Color.Green);
+                Graph("gross", asd, fuck, chtCost, Color.Gold);
+
+
+            }
             double[] y = { monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly };
-                Graph("Series1",months, y, chtCost,Color.Blue);
-            Graph("Series2", months, values, chtCost, Color.Red);
+                Graph("Income", months, y, chtCost, Color.Blue);
+                
 
 
-
-
-
+            
 
         }
 
