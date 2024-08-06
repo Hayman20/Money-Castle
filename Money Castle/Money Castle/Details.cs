@@ -35,7 +35,7 @@ namespace Money_Castle
 
         }
         public float tax(float income)
-        {
+        { // defines a funtion used to find your tax bracket in Australia
             float tax = 0;
             /*
             $18,201 – $45,000	19c for each $1 over $18,200
@@ -43,6 +43,8 @@ namespace Money_Castle
            $120,001 – $180,000	$29,467 plus 37c for each $1 over $120,000
            $180,001 and over	$51,667 plus 45c for each $1 over $180,000
            */
+            // checks you bracket by checking each range.
+            // when found it will calculate your tax and return it for later use 
             if (income > 182001 && income < 45000)
             {
                 tax = (income - 18200) * 0.19f;
@@ -87,27 +89,31 @@ namespace Money_Castle
 
 
 
-            // Clear any existing series
-            // Add the new series to the chart
+            // Adds the new series to the chart
             graph.Series.Add(series);
+            // sets the min y value to the lowest number in the array
             graph.ChartAreas[0].AxisY.Minimum = min;
             if (zoom == true)
-            {
+            {// allows the graph to be zoomed, helps when the domain is too big 
+                // i decided to add this part of the funtion in because through testing my debt graph i found that a domain with more than 15 datapoints would break the graphs
+                // by add the zoom funtion it allows the user to view their debts if it need more than 15 years to pay off
                 graph.ChartAreas[0].AxisY.ScaleView.Zoom(0,max);
 
             }
+            // binds the series data points to the input x and y values inputed 
             series.Points.DataBindXY(x, y);
          
 
             Legend legend = new Legend("MainLegend")
-            {
+            { // creates a custom legend to make the graphs less confusing  
                 Docking = Docking.Top, // Position the legend
                 Alignment = StringAlignment.Center, // Center the legend title
                 LegendStyle = LegendStyle.Row, // Arrange the items in a row
                 IsDockedInsideChartArea = false // Dock the legend outside the chart area
             };
             try
-            {
+            {// tests it 
+                // i added this becuase it was throwing errors on build, with out this it will try and create mutilpe legend when display mutilple inputs on a graph
                 graph.Legends.Add(legend);
                 legend.BackColor = System.Drawing.Color.LightGray;
             }
@@ -116,14 +122,14 @@ namespace Money_Castle
 
         }
         class MonthlyTotal
-        {
+        { // creates a class that has two list
             public string Month { get; set; }
             public float TotalCost { get; set; }
         }
         public void reload()
-        {
+        { // creates a reload funtion to make it easy to recall 
             if (File.Exists(Login.UserDetailPath))
-            {
+            { // if the user detail file exists it will read it 
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
                 string[] lines = line[0].Split(',');
 
@@ -133,35 +139,37 @@ namespace Money_Castle
 
 
                 switch (lines[1])
-                {
+                {// checks the index of lines[1] for a pay period 
                     case "Weekly":
+                        // when found it will calculate total income, monthly income after tax, display tax using the tax funtionn and display net income
                         total = income * 55;
-                        monthly = total / 12;
+                        monthly = Math.Round(total - tax(total))/ 12;
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Fortnightly":
                         total = income * 26;
-                        monthly = total / 12;
+                        monthly = Math.Round(total - tax(total)) / 12;
 
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Monthly":
                         total = income * 12;
-                        monthly = total / 12;
+                        monthly = Math.Round(total - tax(total)) / 12;
 
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
                     case "Yearly":
                         total = income * 1;
-                        monthly = total / 12;
+                        monthly = Math.Round(total - tax(total)) / 12;
 
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round((total - tax(total))).ToString();
                         break;
                 }
+                // rounds the value of monthly to 0 deciamls places
                 monthly = Math.Round(monthly);
 
 
@@ -215,7 +223,7 @@ namespace Money_Castle
                 double[] gross = grossTotal.ToArray();
                 // converts all the lists to an array  Math.Round(gross.Min())
                 Graph("cost", asd, ew, chtCost, Color.Red, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()),false);
-                Graph("gross", asd, gross, chtCost, Color.Green, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()), false);
+                Graph("net", asd, gross, chtCost, Color.Green, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()), false);
                 double[] y = { monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly };
                 // Defines an array of 12 values of monthly pay to be graphed
                 Graph("Income", asd, y, chtCost, Color.LightBlue, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()), false);
@@ -245,12 +253,15 @@ namespace Money_Castle
                     int count = 0;
                     bool yearly = false;
                     while ( debttotal >= 0 ) 
-                    {
+                    {// runs untill debt total is equal or less than 0, 
+                        // this is used to find how long monthly or yearly it will take to pay off the debt
                         count++;
                         debttotal = debttotal - debtPayment;
                         debts.Add(debttotal);
                        date=  date.AddMonths(1);
                         months.Add(date.ToString("yyyy-MM"));
+                        //if the while loop has looped more than 12 times it will starts to find how long it will take to pay the debt off yearly
+                        // i did this to fix the domain issue stated in the graph funtion
                         if (count > 12) 
                         {
                             yearly = true;
@@ -258,26 +269,36 @@ namespace Money_Castle
                             years.Add(date.ToString("yyyy"));
                             yearlydebt.Add(debts.Last());
                             debts.Clear();
+                            // makes yearly true to display yearly not monthly on graph
+                            // adds the year to the years array, and finds the last value in the debt list to find how much debt was paid off that year
+                            // it than clears the debt list to calculate the year again
                         }
                     }
 
-                 
+                 // if yearly is true it will display debt payments by year on the graph
                     if (yearly == true)
-                    {
+                    {   // converts the lists to arrays and adds 0 to the debt to find end point
                         yearlydebt.Add(0);
                         double[] debt = yearlydebt.ToArray();
                         string[] time = years.ToArray();
+
                         MessageBox.Show(debt.Length.ToString());
                         MessageBox.Show(time.Length.ToString());
+                        // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
                         Graph("Debt vs time", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal, false);
 
                     }
+                    // if yearly us false it will display debt paymentys by month on the graph
                     else
                     {
-                        double[] debt = debts.ToArray();
+                         // converts the lists to arrays 
+
+                            double[] debt = debts.ToArray();
                         string[] time = months.ToArray();
                         MessageBox.Show(debt.Length.ToString());
                         MessageBox.Show(time.Length.ToString());
+                        // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
+
                         Graph("Debt vs time", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal, false);
                     }
 
@@ -292,7 +313,7 @@ namespace Money_Castle
        
 
         private void View_Load(object sender, EventArgs e)
-        {
+        {// runs the reload funtion on load
             reload();
           
 
@@ -332,7 +353,7 @@ namespace Money_Castle
         }
 
         private void btnReload_Click(object sender, EventArgs e)
-        {
+        { // runs the reload funtion on click
             reload();
         }
 

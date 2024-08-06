@@ -58,7 +58,7 @@ namespace Money_Castle
         {
             string[] s = File.ReadAllLines(Login.path);
             foreach (string a in s)
-            {
+            {   // checks the users file for the user's info to be displayed
                 string[] users = a.Split(",");
                 if (users[0] == Login.username)
                 {
@@ -67,7 +67,7 @@ namespace Money_Castle
                 }
             }
             if (File.Exists(Login.UserDetailPath))
-            {
+            {//checks the user's details file for info to display
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
                 string[] lines = line[0].Split(',');
                 lblIncome.Text = "$" + lines[0] + " " + lines[1];

@@ -36,14 +36,14 @@ namespace Money_Castle
             string date = DateTime.Now.ToString("dd/MM/yyyy");  
             int user_id=1;
             if (File.Exists(path))
-            {
+            {// if the file exists it will save to the file, if it doesn't it will create a new one at the path location
                 string[] lines = File.ReadAllLines(path);
                 foreach (string line in lines)
-                {
+                {// reads each line in the users text file
                     user_id++;
                     string[] users = line.Split(",");
                     if (users[0] == txtUsername.Text)
-                    {
+                    {// if the username is already in use it will make exists true
 
                         exists = true;
 
@@ -54,23 +54,23 @@ namespace Money_Castle
                 }
             }
             if (exists==true) 
-            {
+            {// if exists is true it will throw an error message that the username is already in use
                 MessageBox.Show("same");
 
             }
             else if (user == "" | pass == "" | con == "")
-            {
+            {// if one of the inputs in null it will throw an error message
                 MessageBox.Show("Please fill out all boxes");
             }
             else if (pass != con)
-            {
+            {// if the inputed password and conformation password don't match it will throw an error
                 MessageBox.Show("the two passwords don't match");
             }
             else
             {
                 string record = user + "," + pass + ',' + date + "," + user_id;
                 using (TextWriter tw = new StreamWriter(path, true))
-                {
+                {// creates a record out of the inputed data to be saved into the users text file
                     tw.WriteLine(record);
                     MessageBox.Show("Added to file");
                     tw.Close();

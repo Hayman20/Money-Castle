@@ -120,7 +120,7 @@ namespace Money_Castle
                     File.WriteAllLines(Login.UserDetailPath, lines);
                     MessageBox.Show("File updated");
                 }
-
+                // sorts the array then remakes it
                 string[] Allcosts = File.ReadAllLines(Login.CostsPath);
                 Array.Sort(Allcosts);
                 File.Delete(Login.CostsPath);
