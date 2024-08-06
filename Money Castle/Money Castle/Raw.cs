@@ -19,9 +19,12 @@ namespace Money_Castle
 
         private void btnGraph_Click(object sender, EventArgs e)
         {
-            View view = new View();
-            view.Show();
-            this.Close();
+            Login.open(Login.view, Login.raw_Data);
+        }
+
+        private void Raw_data_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

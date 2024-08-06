@@ -246,6 +246,7 @@
             ForeColor = SystemColors.ControlLightLight;
             Name = "Raw_data";
             Text = "Raw data";
+            Load += Raw_data_Load;
             ResumeLayout(false);
             PerformLayout();
         }

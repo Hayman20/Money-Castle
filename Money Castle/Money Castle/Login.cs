@@ -40,6 +40,13 @@ namespace Money_Castle
         {
 
         }
+        static public void open(Form open, Form close) 
+        {
+            open.Show();
+            close.Hide();
+           open.Closed += (s, args) => close.Close();
+
+        }
 
         private void btnSignup_Click(object sender, EventArgs e)
         {

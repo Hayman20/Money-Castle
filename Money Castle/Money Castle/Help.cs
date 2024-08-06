@@ -16,5 +16,29 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.view, Login.help);
+
+        }
+
+        private void btnInput_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.input, Login.help);
+
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.use, Login.help);
+
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.settings, Login.help);
+
+        }
     }
 }

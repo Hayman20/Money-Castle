@@ -55,6 +55,7 @@
             btnSetting.Size = new Size(75, 68);
             btnSetting.TabIndex = 36;
             btnSetting.UseVisualStyleBackColor = false;
+            btnSetting.Click += btnSetting_Click;
             // 
             // btnHelp
             // 
@@ -81,6 +82,7 @@
             btnUser.Text = "User";
             btnUser.TextAlign = ContentAlignment.MiddleLeft;
             btnUser.UseVisualStyleBackColor = false;
+            btnUser.Click += btnUser_Click;
             // 
             // btnInput
             // 
@@ -94,6 +96,7 @@
             btnInput.Text = "Input";
             btnInput.TextAlign = ContentAlignment.MiddleLeft;
             btnInput.UseVisualStyleBackColor = false;
+            btnInput.Click += btnInput_Click;
             // 
             // btnDetails
             // 
@@ -107,6 +110,7 @@
             btnDetails.Text = "Details";
             btnDetails.TextAlign = ContentAlignment.MiddleLeft;
             btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.Click += btnDetails_Click;
             // 
             // Help
             // 

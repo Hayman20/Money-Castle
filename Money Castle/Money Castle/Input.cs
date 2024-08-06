@@ -35,6 +35,7 @@ namespace Money_Castle
                 txtDebtDes.Text = lines[5];
                 txtDebtAmount.Text = lines[6];
                 txtDebtPaid.Text = lines[7];
+                txtMonthly.Text = lines[8];
 
 
             }
@@ -45,6 +46,8 @@ namespace Money_Castle
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {   // defines every input as a vaarible for easy access
+
+
             string income = txtIncome.Text;
             string period = cmbPeriod.Text;
             string date = dtpDate.Text;
@@ -57,11 +60,16 @@ namespace Money_Castle
             string debtDes = txtDebtDes.Text;
             string debtAmount = txtDebtAmount.Text;
             string debtPaid = txtDebtPaid.Text;
+            string debtPay = txtMonthly.Text;
             // puts each varible in a collection of varible sorted by what info goes in what file 
-            string userDetils = income + "," + period + "," + savingDes + "," + savingAmount + "," + percent + "," + debtDes + "," + debtAmount + "," + debtPaid;
+            string userDetils = income + "," + period + "," + savingDes + "," + savingAmount + "," + percent + "," + debtDes + "," + debtAmount + "," + debtPaid+","+debtPay;
+            /* In my design instead of the usering input this costs, i would of maded my user to 
+             * input the file location of a bank statment which is impossible with my level of skill and knowledge
+             * so instead of this i have the user input it themselves
+            */
             string costs = date + "," + store + "," + cost + "," + type;
             // checks if any of the inputs are empty
-            if (income == null | store == null | cost == null | savingAmount == null | savingDes == null | debtAmount == null | debtDes == null | debtPaid == null)
+            if (income == null | store == null | cost == null | savingAmount == null | savingDes == null | debtAmount == null | debtDes == null | debtPaid == null|debtPay==null)
             {
                 MessageBox.Show("Please fill all boxes");
             }
@@ -116,12 +124,32 @@ namespace Money_Castle
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            Login.view.Refresh();
+            Login.open(Login.view, Login.input);
 
-            Login.view.Show();
 
-            Login.input.Hide();
+        }
 
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.use, Login.input);
+
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.help, Login.input);
+
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.settings, Login.input);
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

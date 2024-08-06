@@ -22,8 +22,8 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
-       public double monthly;
-        
+        public double monthly;
+
 
         private void chtCostvsGross_Click(object sender, EventArgs e)
         {
@@ -88,7 +88,7 @@ namespace Money_Castle
                         break;
                     case "Fortnightly":
                         total = income * 26;
-                        monthly = total/12 ;
+                        monthly = total / 12;
 
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
@@ -115,18 +115,20 @@ namespace Money_Castle
 
         }
 
-        private void Graph(string seriesName,string[] x, double[] y, Chart graph, Color colour) 
+        private void Graph(string seriesName, string[] x, double[] y, Chart graph, Color colour)
         {
-            
+
 
             // Create a new Series and set its properties
             Series series = new Series(seriesName)
             {
-                
+
                 Color = colour,
                 IsVisibleInLegend = true,
                 IsXValueIndexed = true,
-                ChartType = SeriesChartType.Bar
+                ChartType = SeriesChartType.Line,
+                BorderWidth = 2,
+
             };
 
 
@@ -163,14 +165,14 @@ namespace Money_Castle
 
             var costMonth = new List<string> { };
             var costTotal = new List<double>();
-            var grossTotal  = new List<double>();
+            var grossTotal = new List<double>();
             string[] months =
             {
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
             }; // X-values
-            double[] values = { 100, 200, 53, 35,100,100,100,100,100,100,100,100 }; // Y-values
-          
+            double[] values = { 100, 200, 53, 35, 100, 100, 100, 100, 100, 100, 100, 100 }; // Y-values
+
             // Customize the chart area
             ChartArea chartArea = new ChartArea
             {
@@ -186,7 +188,7 @@ namespace Money_Castle
 
                 // Read the file line by line
                 while ((line = sr.ReadLine()) != null)
-                {   
+                {
                     var items = line.Split(',');
                     DateTime date = DateTime.Parse(items[0]);
                     float cost = float.Parse(items[2]);
@@ -203,45 +205,42 @@ namespace Money_Castle
                         // Create a new entry for the month
                         monthlyTotals.Add(new MonthlyTotal { Month = monthKey, TotalCost = cost });
                     }
-                    
+
 
                 }
                 foreach (var monthlyTotal in monthlyTotals)
                 {
-                    costMonth.Add( monthlyTotal.Month);
+                    costMonth.Add(monthlyTotal.Month);
                     costTotal.Add(monthlyTotal.TotalCost);
-                    grossTotal.Add(monthly-monthlyTotal.TotalCost);
+                    grossTotal.Add(monthly - monthlyTotal.TotalCost);
                 }
                 string[] asd = costMonth.ToArray();
                 double[] ew = costTotal.ToArray();
                 double[] fuck = grossTotal.ToArray();
-                Graph("cost", asd, ew, chtCost, Color.Green);
-                Graph("gross", asd, fuck, chtCost, Color.Gold);
+                Graph("cost", asd, ew, chtCost, Color.Red);
+                Graph("gross", asd, fuck, chtCost, Color.Green);
 
 
             }
             double[] y = { monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly };
-                Graph("Income", months, y, chtCost, Color.Blue);
-                
+            Graph("Income", months, y, chtCost, Color.Blue);
 
 
-            
+
+
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Raw_data myForm = new Raw_data();
-            myForm.Show();
-            this.Hide();
+
+            Login.open(Login.raw_Data, Login.view);
+
         }
 
         private void btnInput_Click(object sender, EventArgs e)
         {
-
-            Login.input.Show();
-            Login.view.Hide();
-            Login.input.Closed += (s, args) => this.Close();
+            Login.open(Login.input, Login.view);
 
         }
 
@@ -268,6 +267,29 @@ namespace Money_Castle
         private void chtDebt_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.use, Login.view);
+
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.help, Login.view);
+
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.settings, Login.view);
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
