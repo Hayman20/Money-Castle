@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Money Castle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+503f2894465ff342d3ec026be3d11d8c8d99dfcf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c27e844764ea964118d8ccdcf364879fe1cdf0ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("Money Castle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Money Castle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
