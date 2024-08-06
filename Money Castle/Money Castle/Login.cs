@@ -42,9 +42,9 @@ namespace Money_Castle
         }
         static public void open(Form open, Form close) 
         {
-            open.Show();
             close.Hide();
-            open.Closed += (s, args) => close.Close();
+            open.FormClosed += (s, args) => close.Close();
+            open.Show();
 
         }
 
@@ -88,8 +88,9 @@ namespace Money_Castle
                         CostsPath = users[3] + "Costs.txt";
                         view = new View();
                         view.Show();
-                        login.Hide();
-                        view.Closed += (s, args) => login.Close();
+                        this.Hide();
+                        view.Closed += (s, args) => this.Close();
+
 
 
 

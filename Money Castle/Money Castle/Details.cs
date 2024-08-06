@@ -66,7 +66,7 @@ namespace Money_Castle
             return tax;
 
         }
-        private void Graph(string seriesName, string[] x, double[] y, Chart graph, Color colour, SeriesChartType type)
+        private void Graph(string seriesName, string[] x, double[] y, Chart graph, Color colour, SeriesChartType type, double min, double max, bool zoom)
         {
 
 
@@ -79,6 +79,9 @@ namespace Money_Castle
                 IsXValueIndexed = true,
                 ChartType = type,
                 BorderWidth = 2,
+                IsValueShownAsLabel = true,
+                LabelBackColor = colour,
+                LabelBorderWidth = 1,
 
             };
 
@@ -87,7 +90,15 @@ namespace Money_Castle
             // Clear any existing series
             // Add the new series to the chart
             graph.Series.Add(series);
+            graph.ChartAreas[0].AxisY.Minimum = min;
+            if (zoom == true)
+            {
+                graph.ChartAreas[0].AxisY.ScaleView.Zoom(0,max);
+
+            }
             series.Points.DataBindXY(x, y);
+         
+
             Legend legend = new Legend("MainLegend")
             {
                 Docking = Docking.Top, // Position the legend
@@ -151,7 +162,7 @@ namespace Money_Castle
                         lblNet.Text = Math.Round((total - tax(total))).ToString();
                         break;
                 }
-
+                monthly = Math.Round(monthly);
 
 
             }
@@ -162,11 +173,7 @@ namespace Money_Castle
 
 
             // Customize the chart area
-            ChartArea chartArea = new ChartArea
-            {
-                Name = "MainChartArea"
-            };
-            chtCost.ChartAreas.Add(chartArea);
+         
             List<MonthlyTotal> monthlyTotals = new List<MonthlyTotal>();
             //Creates a new object
 
@@ -199,19 +206,19 @@ namespace Money_Castle
                 foreach (var monthlyTotal in monthlyTotals)
                 {
                     costMonth.Add(monthlyTotal.Month);
-                    costTotal.Add(monthlyTotal.TotalCost);
-                    grossTotal.Add(monthly - monthlyTotal.TotalCost);
+                    costTotal.Add(Math.Round(monthlyTotal.TotalCost));
+                    grossTotal.Add(Math.Round(monthly - monthlyTotal.TotalCost));
                     // Add all info from lists to to another list
                 }
                 string[] asd = costMonth.ToArray();
                 double[] ew = costTotal.ToArray();
-                double[] fuck = grossTotal.ToArray();
-                // converts all the lists to an array
-                Graph("cost", asd, ew, chtCost, Color.Red, SeriesChartType.Line);
-                Graph("gross", asd, fuck, chtCost, Color.Green, SeriesChartType.Line);
+                double[] gross = grossTotal.ToArray();
+                // converts all the lists to an array  Math.Round(gross.Min())
+                Graph("cost", asd, ew, chtCost, Color.Red, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()),false);
+                Graph("gross", asd, gross, chtCost, Color.Green, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()), false);
                 double[] y = { monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly };
                 // Defines an array of 12 values of monthly pay to be graphed
-                Graph("Income", asd, y, chtCost, Color.Blue, SeriesChartType.Line);
+                Graph("Income", asd, y, chtCost, Color.LightBlue, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()), false);
                 // calls my graph funtion to create the series on the graph, and define their type.
 
 
@@ -225,25 +232,54 @@ namespace Money_Castle
                 {
                     var items = line.Split(',');
                     DateTime date = DateTime.Parse(items[9]);
+
                     float Debtamout = float.Parse(items[6]);
                     float DebtPaid = float.Parse(items[7]);
                     float debttotal = Debtamout - DebtPaid;
                     float debtPayment = float.Parse(items[8]);
-                    var debts = new List<double> { };
-                    var months = new List<DateTime> {date };
+                    var debts = new List<double> { debttotal};
+                    var yearlydebt = new List<double> { };
+                    var months = new List<string> {date.ToString("yyyy-MM") };
                     var strings = new List<string>();
-                    string monthKey = date.ToString("yyyy-MM");
-                    for (; debttotal <= 0; debttotal=debttotal-debtPayment) 
-                    { 
+                    var years = new List<string> { date.ToString("yyyy") };
+                    int count = 0;
+                    bool yearly = false;
+                    while ( debttotal >= 0 ) 
+                    {
+                        count++;
+                        debttotal = debttotal - debtPayment;
                         debts.Add(debttotal);
-                        date.AddMonths(1);
-                        months.Add(date);
+                       date=  date.AddMonths(1);
+                        months.Add(date.ToString("yyyy-MM"));
+                        if (count > 12) 
+                        {
+                            yearly = true;
+                            count = 0;
+                            years.Add(date.ToString("yyyy"));
+                            yearlydebt.Add(debts.Last());
+                            debts.Clear();
+                        }
                     }
-                    strings.Add(months.ToString());
-                    double[] debt =debts.ToArray();
-                    string[] month = strings.ToArray();
-                    Graph("Debt vs time", month, debt, chtDebt, Color.Azure, SeriesChartType.Line);
 
+                 
+                    if (yearly == true)
+                    {
+                        yearlydebt.Add(0);
+                        double[] debt = yearlydebt.ToArray();
+                        string[] time = years.ToArray();
+                        MessageBox.Show(debt.Length.ToString());
+                        MessageBox.Show(time.Length.ToString());
+                        Graph("Debt vs time", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal, false);
+
+                    }
+                    else
+                    {
+                        double[] debt = debts.ToArray();
+                        string[] time = months.ToArray();
+                        MessageBox.Show(debt.Length.ToString());
+                        MessageBox.Show(time.Length.ToString());
+                        Graph("Debt vs time", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal, false);
+                    }
 
 
 
@@ -258,8 +294,8 @@ namespace Money_Castle
         private void View_Load(object sender, EventArgs e)
         {
             reload();
+          
 
-           
 
 
 
