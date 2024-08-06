@@ -121,7 +121,7 @@
             chtDebt.Location = new Point(118, 137);
             chtDebt.Margin = new Padding(3, 2, 3, 2);
             chtDebt.Name = "chtDebt";
-            chtDebt.Size = new Size(412, 249);
+            chtDebt.Size = new Size(412, 395);
             chtDebt.TabIndex = 14;
             chtDebt.Click += chtDebt_Click;
             // 
@@ -131,7 +131,7 @@
             chartArea2.BorderWidth = 4;
             chartArea2.Name = "ChartArea1";
             chtCost.ChartAreas.Add(chartArea2);
-            chtCost.Location = new Point(655, 117);
+            chtCost.Location = new Point(536, 137);
             chtCost.Margin = new Padding(3, 2, 3, 2);
             chtCost.Name = "chtCost";
             chtCost.Size = new Size(367, 395);
@@ -148,14 +148,14 @@
             chtTotal.ChartAreas.Add(chartArea3);
             legend1.Name = "Legend1";
             chtTotal.Legends.Add(legend1);
-            chtTotal.Location = new Point(90, 4);
+            chtTotal.Location = new Point(909, 137);
             chtTotal.Margin = new Padding(3, 2, 3, 2);
             chtTotal.Name = "chtTotal";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chtTotal.Series.Add(series1);
-            chtTotal.Size = new Size(204, 118);
+            chtTotal.Size = new Size(308, 395);
             chtTotal.TabIndex = 16;
             chtTotal.Text = "chart3";
             chtTotal.Click += chtTotal_Click;
@@ -280,7 +280,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlText;
-            ClientSize = new Size(1034, 632);
+            ClientSize = new Size(1229, 632);
             Controls.Add(btnReload);
             Controls.Add(lblNet);
             Controls.Add(label3);

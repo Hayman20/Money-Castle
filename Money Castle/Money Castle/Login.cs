@@ -27,7 +27,7 @@ namespace Money_Castle
         public static string ID;
         public static string UserDetailPath;
         public static string CostsPath;
-        
+        public static string username;
 
 
         public static string path = "User.txt";
@@ -86,6 +86,7 @@ namespace Money_Castle
                         ID = users[3];
                         UserDetailPath = users[3]+ "Details.txt";
                         CostsPath = users[3] + "Costs.txt";
+                        username = users[0];
                         view = new View();
                         view.Show();
                         this.Hide();

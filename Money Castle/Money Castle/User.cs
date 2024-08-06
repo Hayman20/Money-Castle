@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Money_Castle
 {
@@ -49,6 +52,36 @@ namespace Money_Castle
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void User_Load(object sender, EventArgs e)
+        {
+            string[] s = File.ReadAllLines(Login.path);
+            foreach (string a in s)
+            {
+                string[] users = a.Split(",");
+                if (users[0] == Login.username)
+                {
+                    lblUser.Text = users[0];
+                    lblDate.Text = users[2];
+                }
+            }
+            if (File.Exists(Login.UserDetailPath))
+            {
+                string[] line = File.ReadAllLines(Login.UserDetailPath);
+                string[] lines = line[0].Split(',');
+                lblIncome.Text = "$" + lines[0] + " " + lines[1];
+                lblPercent.Text = lines[4] + "%";
+                lblSaving.Text = "$" + lines[3];
+                lblDebt.Text = "$" + lines[5];
+
+
+            }
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            Login.change.ShowDialog();
         }
     }
 }
