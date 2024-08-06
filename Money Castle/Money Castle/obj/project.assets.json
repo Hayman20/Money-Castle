@@ -80,19 +80,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\haydn\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
+      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Documents\\GitHub\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
       "projectName": "Money Castle",
-      "projectPath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
-      "packagesPath": "C:\\Users\\haydn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\haydn\\OneDrive\\Documents\\school work\\year 12\\computer\\SAT\\Development\\Money-Castle\\Money Castle\\Money Castle\\obj\\",
+      "projectPath": "C:\\Users\\User\\OneDrive\\Documents\\GitHub\\Money-Castle\\Money Castle\\Money Castle\\Money Castle.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\OneDrive\\Documents\\GitHub\\Money-Castle\\Money Castle\\Money Castle\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\haydn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -112,6 +112,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -134,6 +139,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -142,7 +165,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }

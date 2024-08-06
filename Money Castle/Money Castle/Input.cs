@@ -36,6 +36,7 @@ namespace Money_Castle
                 txtDebtAmount.Text = lines[6];
                 txtDebtPaid.Text = lines[7];
                 txtMonthly.Text = lines[8];
+                dtpDebtTime.Text = lines[9];
 
 
             }
@@ -61,8 +62,9 @@ namespace Money_Castle
             string debtAmount = txtDebtAmount.Text;
             string debtPaid = txtDebtPaid.Text;
             string debtPay = txtMonthly.Text;
+            string debtTime = dtpDebtTime.Text;
             // puts each varible in a collection of varible sorted by what info goes in what file 
-            string userDetils = income + "," + period + "," + savingDes + "," + savingAmount + "," + percent + "," + debtDes + "," + debtAmount + "," + debtPaid+","+debtPay;
+            string userDetils = income + "," + period + "," + savingDes + "," + savingAmount + "," + percent + "," + debtDes + "," + debtAmount + "," + debtPaid+","+debtPay+","+debtTime;
             /* In my design instead of the usering input this costs, i would of maded my user to 
              * input the file location of a bank statment which is impossible with my level of skill and knowledge
              * so instead of this i have the user input it themselves
@@ -82,7 +84,7 @@ namespace Money_Castle
             // once every thing is correct it will save it to two files 
             else
             {   // adds a entry to the costs of the user
-                if (cost != "Cost" | store != "Store" | type != "Type")
+                if (cost != "Cost" | store != "Store" | type != "")
                 {
                     if (float.TryParse(cost, out float test10))
                     {

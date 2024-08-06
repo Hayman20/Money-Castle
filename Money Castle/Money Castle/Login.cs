@@ -44,7 +44,7 @@ namespace Money_Castle
         {
             open.Show();
             close.Hide();
-           open.Closed += (s, args) => close.Close();
+            open.Closed += (s, args) => close.Close();
 
         }
 
@@ -88,7 +88,9 @@ namespace Money_Castle
                         CostsPath = users[3] + "Costs.txt";
                         view = new View();
                         view.Show();
-                        Login.view.Closed += (s, args) => this.Close();
+                        login.Hide();
+                        view.Closed += (s, args) => login.Close();
+
 
 
 
