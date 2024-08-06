@@ -93,7 +93,7 @@ namespace Money_Castle
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
-                    case "Mouthly":
+                    case "Monthly":
                         total = income * 12;
                         monthly = total / 12;
 
