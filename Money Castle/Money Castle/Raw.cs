@@ -32,10 +32,10 @@ namespace Money_Castle
             {
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
                 string[] lines = line[0].Split(',');
-               
+
                 lblDebt.Text = lines[6];
                 lblPaid.Text = (lines[7]);
-               
+
 
 
             }
@@ -75,11 +75,11 @@ namespace Money_Castle
             {
                 columnIndex = 3;
             }
-           /* else if (selectedItem.Contains("Cost"))
-            { i was going to make it sort by cost too but it doesn't work because it treats it as a string not a float
-                columnIndex = 2;
-            }
-            */
+            /* else if (selectedItem.Contains("Cost"))
+             { i was going to make it sort by cost too but it doesn't work because it treats it as a string not a float
+                 columnIndex = 2;
+             }
+             */
             else if (selectedItem.Contains("Date"))
             {
                 columnIndex = 0;
@@ -94,14 +94,28 @@ namespace Money_Castle
             List<ListViewItem> items = lsvOutput.Items.Cast<ListViewItem>().ToList();
 
             // Sort based on the selected column and order
-            
-            
-                items = items.OrderBy(item => item.SubItems[columnIndex].Text).ToList();
-            
-            
+
+
+            items = items.OrderBy(item => item.SubItems[columnIndex].Text).ToList();
+
+
             // Clear and repopulate the ListView
             lsvOutput.Items.Clear();
             lsvOutput.Items.AddRange(items.ToArray());
+        }
+
+        private void lsvOutput_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            
+
+
+            
+
         }
     }
 }

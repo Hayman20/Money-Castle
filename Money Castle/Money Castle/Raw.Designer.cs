@@ -97,6 +97,7 @@
             lsvOutput.TabIndex = 4;
             lsvOutput.UseCompatibleStateImageBehavior = false;
             lsvOutput.View = System.Windows.Forms.View.Details;
+            lsvOutput.SelectedIndexChanged += lsvOutput_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -213,10 +214,10 @@
             btnGraph.ForeColor = SystemColors.ButtonHighlight;
             btnGraph.Image = Properties.Resources.signal_cellular_alt_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnGraph.ImageAlign = ContentAlignment.MiddleRight;
-            btnGraph.Location = new Point(281, 286);
+            btnGraph.Location = new Point(294, 286);
             btnGraph.Margin = new Padding(3, 2, 3, 2);
             btnGraph.Name = "btnGraph";
-            btnGraph.Size = new Size(133, 46);
+            btnGraph.Size = new Size(133, 56);
             btnGraph.TabIndex = 22;
             btnGraph.Text = "View Graphs";
             btnGraph.TextAlign = ContentAlignment.MiddleLeft;
