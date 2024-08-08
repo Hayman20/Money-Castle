@@ -68,7 +68,7 @@ namespace Money_Castle
             return tax;
 
         }
-        private void Graph(string seriesName, string[] x, double[] y, Chart graph, Color colour, SeriesChartType type, double min, double max, bool zoom)
+        private void Graph(string seriesName, string[] x, double[] y, Chart graph, Color colour, SeriesChartType type, double min, double max)
         {
 
 
@@ -93,13 +93,7 @@ namespace Money_Castle
             graph.Series.Add(series);
             // sets the min y value to the lowest number in the array
             graph.ChartAreas[0].AxisY.Minimum = min;
-            if (zoom == true)
-            {// allows the graph to be zoomed, helps when the domain is too big 
-                // i decided to add this part of the funtion in because through testing my debt graph i found that a domain with more than 15 datapoints would break the graphs
-                // by add the zoom funtion it allows the user to view their debts if it need more than 15 years to pay off
-                graph.ChartAreas[0].AxisY.ScaleView.Zoom(0,max);
-
-            }
+           
             // binds the series data points to the input x and y values inputed 
             series.Points.DataBindXY(x, y);
          
@@ -126,8 +120,18 @@ namespace Money_Castle
             public string Month { get; set; }
             public float TotalCost { get; set; }
         }
+        class StoreTotal 
+        { 
+            public string Store { get; set; }
+
+            public float TotalCost { get; set; }
+            
+        }
         public void reload()
         { // creates a reload funtion to make it easy to recall 
+            chtCost.Series.Clear();
+            chtDebt.Series.Clear();
+            chtTotal.Series.Clear();
             if (File.Exists(Login.UserDetailPath))
             { // if the user detail file exists it will read it 
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
@@ -174,139 +178,182 @@ namespace Money_Castle
 
 
             }
-            var costMonth = new List<string> { };
-            var costTotal = new List<double>();
-            var grossTotal = new List<double>();
-            // creates new lists for it to output and be comverted into an array
-
-
-            // Customize the chart area
-         
-            List<MonthlyTotal> monthlyTotals = new List<MonthlyTotal>();
-            //Creates a new object
-
-            using (StreamReader sr = new StreamReader(Login.CostsPath))
+            if (File.Exists(Login.CostsPath))
             {
-                string line;
+                var costMonth = new List<string> { };
+                var costTotal = new List<double>();
+                var grossTotal = new List<double>();
+                var Store = new List<string>();
+                var storeCosts = new List<double>();
+                // creates new lists for it to output and be comverted into an array
 
-                // Read the file line by line
-                while ((line = sr.ReadLine()) != null)
+                List<StoreTotal> storeTotals = new List<StoreTotal>();
+
+                List<MonthlyTotal> monthlyTotals = new List<MonthlyTotal>();
+                //Creates a new object
+
+                using (StreamReader sr = new StreamReader(Login.CostsPath))
                 {
-                    var items = line.Split(',');
-                    DateTime date = DateTime.Parse(items[0]);
-                    float cost = float.Parse(items[2]);
-                    string monthKey = date.ToString("yyyy-MM");
+                    string line;
 
-                    MonthlyTotal monthlyTotal = monthlyTotals.Find(mt => mt.Month == monthKey);
-                    if (monthlyTotal != null)
+                    // Read the file line by line
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        // Add cost to the existing entry
-                        monthlyTotal.TotalCost += cost;
-                    }
-                    else
-                    {
-                        // Create a new entry for the month
-                        monthlyTotals.Add(new MonthlyTotal { Month = monthKey, TotalCost = cost });
-                    }
+                        var items = line.Split(',');
+                        DateTime date = DateTime.Parse(items[0]);
+                        float cost = float.Parse(items[2]);
+                        string monthKey = date.ToString("yyyy-MM");
+                        string storeName = items[1];
 
 
-                }
-                foreach (var monthlyTotal in monthlyTotals)
-                {
-                    costMonth.Add(monthlyTotal.Month);
-                    costTotal.Add(Math.Round(monthlyTotal.TotalCost));
-                    grossTotal.Add(Math.Round(monthly - monthlyTotal.TotalCost));
-                    // Add all info from lists to to another list
-                }
-                string[] asd = costMonth.ToArray();
-                double[] ew = costTotal.ToArray();
-                double[] gross = grossTotal.ToArray();
-                // converts all the lists to an array  Math.Round(gross.Min())
-                Graph("cost", asd, ew, chtCost, Color.Red, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()),false);
-                Graph("net", asd, gross, chtCost, Color.Green, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()), false);
-                double[] y = { monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly, monthly };
-                // Defines an array of 12 values of monthly pay to be graphed
-                Graph("Income", asd, y, chtCost, Color.LightBlue, SeriesChartType.Line, Math.Round(gross.Min()), Math.Round(gross.Max()), false);
-                // calls my graph funtion to create the series on the graph, and define their type.
-
-
-            }
-            using (StreamReader sr = new StreamReader(Login.UserDetailPath))
-            {
-                string line;
-
-                // Read the file line by line
-                while ((line = sr.ReadLine()) != null)
-                {
-                    var items = line.Split(',');
-                    DateTime date = DateTime.Parse(items[9]);
-
-                    float Debtamout = float.Parse(items[6]);
-                    float DebtPaid = float.Parse(items[7]);
-                    float debttotal = Debtamout - DebtPaid;
-                    float debtPayment = float.Parse(items[8]);
-                    var debts = new List<double> { debttotal};
-                    var yearlydebt = new List<double> { };
-                    var months = new List<string> {date.ToString("yyyy-MM") };
-                    var strings = new List<string>();
-                    var years = new List<string> { date.ToString("yyyy") };
-                    int count = 0;
-                    bool yearly = false;
-                    while ( debttotal >= 0 ) 
-                    {// runs untill debt total is equal or less than 0, 
-                        // this is used to find how long monthly or yearly it will take to pay off the debt
-                        count++;
-                        debttotal = debttotal - debtPayment;
-                        debts.Add(debttotal);
-                       date=  date.AddMonths(1);
-                        months.Add(date.ToString("yyyy-MM"));
-                        //if the while loop has looped more than 12 times it will starts to find how long it will take to pay the debt off yearly
-                        // i did this to fix the domain issue stated in the graph funtion
-                        if (count > 12) 
+                        MonthlyTotal monthlyTotal = monthlyTotals.Find(mt => mt.Month == monthKey);
+                        if (monthlyTotal != null)
                         {
-                            yearly = true;
-                            count = 0;
-                            years.Add(date.ToString("yyyy"));
-                            yearlydebt.Add(debts.Last());
-                            debts.Clear();
-                            // makes yearly true to display yearly not monthly on graph
-                            // adds the year to the years array, and finds the last value in the debt list to find how much debt was paid off that year
-                            // it than clears the debt list to calculate the year again
+                            // Add cost to the existing entry
+                            monthlyTotal.TotalCost += cost;
                         }
+                        else
+                        {
+                            // Create a new entry for the month
+                            monthlyTotals.Add(new MonthlyTotal { Month = monthKey, TotalCost = cost });
+                        }
+                        StoreTotal storeTotal = storeTotals.Find(st => st.Store.Equals(storeName, StringComparison.OrdinalIgnoreCase));
+                        if (storeTotal == null)
+                        {
+                            // Create a new store and add it to the list if not found
+
+                            storeTotals.Add(new StoreTotal { Store = storeName, TotalCost = cost });
+                        }
+                        else 
+                        { 
+                            storeTotal.TotalCost += cost;
+                        }
+
+
                     }
-
-                 // if yearly is true it will display debt payments by year on the graph
-                    if (yearly == true)
-                    {   // converts the lists to arrays and adds 0 to the debt to find end point
-                        yearlydebt.Add(0);
-                        double[] debt = yearlydebt.ToArray();
-                        string[] time = years.ToArray();
-
-                        MessageBox.Show(debt.Length.ToString());
-                        MessageBox.Show(time.Length.ToString());
-                        // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
-                        Graph("Debt vs time", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal, false);
+                    foreach (var monthlyTotal in monthlyTotals)
+                    {
+                        costMonth.Add(monthlyTotal.Month);
+                        costTotal.Add(Math.Round(monthlyTotal.TotalCost));
+                        grossTotal.Add(Math.Round(monthly - monthlyTotal.TotalCost));
+                        // Add all info from lists to another list
+                    }
+                    foreach (var storeTotal in storeTotals) 
+                    {
+                        Store.Add(storeTotal.Store);
+                        storeCosts.Add(storeTotal.TotalCost);
+                    }
+                    string[] months = costMonth.ToArray();
+                    double[] costs = costTotal.ToArray();
+                    double[] gross = grossTotal.ToArray();
+                    string[] stores = Store.ToArray();
+                    double[] storecost = storeCosts.ToArray();
+                    // coverts list into array to work with the graph funtion
+                    var temp_y = new List<double>();
+                    for (int i = 0; i < months.Length; i++)
+                    { // finds the length of the months that have a cost and adds mothnly pay to a list
+                        temp_y.Add(monthly);
+                    }
+                    double[] y = temp_y.ToArray();
+                    //coverts list to array
+                    double min;
+                    if (costs.Min() > gross.Min())
+                    {   // finds the array with the lowest number so the y min can be set
+                        min = Math.Round(gross.Min());
 
                     }
-                    // if yearly us false it will display debt paymentys by month on the graph
                     else
                     {
-                         // converts the lists to arrays 
+                        min = Math.Round(costs.Min());
+                    }
+                    // converts all the lists to an array  Math.Round(gross.Min())
+                    Graph("cost", months, costs, chtCost, Color.Red, SeriesChartType.Line, min, Math.Round(costs.Max()));
+                    Graph("net", months, gross, chtCost, Color.Green, SeriesChartType.Line, min, Math.Round(costs.Max()));
+
+                    // Defines an array of 12 values of monthly pay to be graphed
+                    Graph("Income", months, y, chtCost, Color.LightBlue, SeriesChartType.Line, Math.Round(costs.Min()), Math.Round(costs.Max()));
+                    // calls my graph funtion to create the series on the graph, and define their type.
+                    Graph("Stores", stores, storecost, chtTotal, Color.Brown, SeriesChartType.Pie, storecost.Min(), storecost.Max());
+
+                }
+            }
+            if (File.Exists(Login.UserDetailPath))
+            {
+                using (StreamReader sr = new StreamReader(Login.UserDetailPath))
+                {
+                    string line;
+
+                    // Read the file line by line
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        var items = line.Split(',');
+                        DateTime date = DateTime.Parse(items[9]);
+
+                        float Debtamout = float.Parse(items[6]);
+                        float DebtPaid = float.Parse(items[7]);
+                        float debttotal = Debtamout - DebtPaid;
+                        float debtPayment = float.Parse(items[8]);
+                        var debts = new List<double> { debttotal };
+                        var yearlydebt = new List<double> { };
+                        var months = new List<string> { date.ToString("yyyy-MM") };
+                        var strings = new List<string>();
+                        var years = new List<string> { date.ToString("yyyy") };
+                        int count = 0;
+                        bool yearly = false;
+                        while (debttotal >= 0)
+                        {// runs untill debt total is equal or less than 0, 
+                         // this is used to find how long monthly or yearly it will take to pay off the debt
+                            count++;
+                            debttotal = debttotal - debtPayment;
+                            debts.Add(debttotal);
+                            date = date.AddMonths(1);
+                            months.Add(date.ToString("yyyy-MM"));
+                            //if the while loop has looped more than 12 times it will starts to find how long it will take to pay the debt off yearly
+                            // i did this to fix the domain issue stated in the graph funtion
+                            if (count > 12)
+                            {
+                                yearly = true;
+                                count = 0;
+                                years.Add(date.ToString("yyyy"));
+                                yearlydebt.Add(debts.Last());
+                                debts.Clear();
+                                // makes yearly true to display yearly not monthly on graph
+                                // adds the year to the years array, and finds the last value in the debt list to find how much debt was paid off that year
+                                // it than clears the debt list to calculate the year again
+                            }
+                        }
+
+                        // if yearly is true it will display debt payments by year on the graph
+                        if (yearly == true)
+                        {   // converts the lists to arrays and adds 0 to the debt to find end point
+                            yearlydebt.Add(0);
+                            double[] debt = yearlydebt.ToArray();
+                            string[] time = years.ToArray();
+
+                           
+                            // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
+                            Graph("Debt", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal);
+
+                        }
+                        // if yearly us false it will display debt paymentys by month on the graph
+                        else
+                        {
+                            // converts the lists to arrays 
 
                             double[] debt = debts.ToArray();
-                        string[] time = months.ToArray();
-                        MessageBox.Show(debt.Length.ToString());
-                        MessageBox.Show(time.Length.ToString());
-                        // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
+                            string[] time = months.ToArray();
+                          
+                            // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
 
-                        Graph("Debt vs time", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal, false);
+                            Graph("Debt", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal);
+                        }
+
+
+
+
                     }
 
-
-
-
                 }
-
             }
         }
 

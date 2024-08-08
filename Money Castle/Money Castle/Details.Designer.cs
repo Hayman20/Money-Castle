@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             label1 = new Label();
             label2 = new Label();
@@ -123,6 +123,9 @@
             chtDebt.Name = "chtDebt";
             chtDebt.Size = new Size(412, 395);
             chtDebt.TabIndex = 14;
+            title1.Name = "Title1";
+            title1.Text = "Debt vs Time";
+            chtDebt.Titles.Add(title1);
             chtDebt.Click += chtDebt_Click;
             // 
             // chtCost
@@ -137,27 +140,24 @@
             chtCost.Size = new Size(367, 395);
             chtCost.TabIndex = 15;
             chtCost.Text = "chart2";
-            title1.Name = "Title1";
-            title1.Text = "Gross income vs Costs";
-            chtCost.Titles.Add(title1);
+            title2.Name = "Title1";
+            title2.Text = "Gross income vs Costs";
+            chtCost.Titles.Add(title2);
             chtCost.Click += chtCost_Click;
             // 
             // chtTotal
             // 
             chartArea3.Name = "ChartArea1";
             chtTotal.ChartAreas.Add(chartArea3);
-            legend1.Name = "Legend1";
-            chtTotal.Legends.Add(legend1);
             chtTotal.Location = new Point(909, 137);
             chtTotal.Margin = new Padding(3, 2, 3, 2);
             chtTotal.Name = "chtTotal";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chtTotal.Series.Add(series1);
-            chtTotal.Size = new Size(308, 395);
+            chtTotal.Size = new Size(384, 395);
             chtTotal.TabIndex = 16;
             chtTotal.Text = "chart3";
+            title3.Name = "Title1";
+            title3.Text = "Total cost per store";
+            chtTotal.Titles.Add(title3);
             chtTotal.Click += chtTotal_Click;
             // 
             // btnLogout
@@ -280,7 +280,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlText;
-            ClientSize = new Size(1229, 632);
+            ClientSize = new Size(1317, 632);
             Controls.Add(btnReload);
             Controls.Add(lblNet);
             Controls.Add(label3);

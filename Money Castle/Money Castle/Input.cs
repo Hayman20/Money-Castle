@@ -23,6 +23,7 @@ namespace Money_Castle
 
         private void Input_Load(object sender, EventArgs e)
         {
+            dtpDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
             if (File.Exists(Login.UserDetailPath))
             {
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
@@ -63,6 +64,7 @@ namespace Money_Castle
             string debtPaid = txtDebtPaid.Text;
             string debtPay = txtMonthly.Text;
             string debtTime = dtpDebtTime.Text;
+            bool worked = false;
             // puts each varible in a collection of varible sorted by what info goes in what file 
             string userDetils = income + "," + period + "," + savingDes + "," + savingAmount + "," + percent + "," + debtDes + "," + debtAmount + "," + debtPaid+","+debtPay+","+debtTime;
             /* In my design instead of the usering input this costs, i would of maded my user to 
@@ -71,7 +73,7 @@ namespace Money_Castle
             */
             string costs = date + "," + store + "," + cost + "," + type;
             // checks if any of the inputs are empty
-            if (income == null | store == null | cost == null | savingAmount == null | savingDes == null | debtAmount == null | debtDes == null | debtPaid == null | debtPay == null)
+            if (income == null |   savingAmount == null | savingDes == null | debtAmount == null | debtDes == null | debtPaid == null | debtPay == null)
             {
                 MessageBox.Show("Please fill all boxes");
             }
@@ -89,18 +91,23 @@ namespace Money_Castle
             // once every thing is correct it will save it to two files 
             else
             {   // adds a entry to the costs of the user
-                if (cost != "Cost" | store != "Store" | type != "")
+                if (cost != "" && store != "" && type != "")
                 {
+
                     if (float.TryParse(cost, out float test10))
                     {
                         using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
                         {
                             tw.WriteLine(costs);
-                            MessageBox.Show("File created");
+                            worked = true;
                             tw.Close();
                         }
                     }
                     else { MessageBox.Show("please use numbers for cost"); }
+                }
+                else if (cost != "" | store != "" | type != "")
+                {
+                    MessageBox.Show("To add a cost please fill out all boxes.");
                 }
                 // if the userDetail file doesn't exist it will create one and save all the data to it
                 if (!File.Exists(Login.UserDetailPath))
@@ -108,7 +115,7 @@ namespace Money_Castle
                     using (TextWriter tw = new StreamWriter(Login.UserDetailPath, true))
                     {
                         tw.WriteLine(userDetils);
-                        MessageBox.Show("File created");
+                        worked = true;
                         tw.Close();
                     }
                 }
@@ -118,13 +125,22 @@ namespace Money_Castle
                     string[] lines = File.ReadAllLines(Login.UserDetailPath);
                     lines[0] = userDetils;
                     File.WriteAllLines(Login.UserDetailPath, lines);
-                    MessageBox.Show("File updated");
+                    worked = true ;
                 }
                 // sorts the array then remakes it
                 string[] Allcosts = File.ReadAllLines(Login.CostsPath);
                 Array.Sort(Allcosts);
                 File.Delete(Login.CostsPath);
                 File.WriteAllLines(Login.CostsPath, Allcosts);
+                if (worked)
+                {
+                    MessageBox.Show("File updated");
+
+                }
+                else 
+                {
+                    MessageBox.Show("Something went wrong");
+                }
 
             }
         }
