@@ -69,7 +69,7 @@ namespace Money_Castle
 
         }
         private void Graph(string seriesName, string[] x, double[] y, Chart graph, Color colour, SeriesChartType type, double min, double max)
-        {
+        {// defines the graph funtion that can be used to create most types of graphs
 
 
             // Create a new Series and set its properties
@@ -99,15 +99,15 @@ namespace Money_Castle
          
 
             Legend legend = new Legend("MainLegend")
-            { // creates a custom legend to make the graphs less confusing  
-                Docking = Docking.Top, // Position the legend
-                Alignment = StringAlignment.Center, // Center the legend title
-                LegendStyle = LegendStyle.Row, // Arrange the items in a row
-                IsDockedInsideChartArea = false // Dock the legend outside the chart area
+            { // creates and positions a custom legend to make the graphs less confusing  
+                Docking = Docking.Top, 
+                Alignment = StringAlignment.Center, 
+                LegendStyle = LegendStyle.Row, 
+                IsDockedInsideChartArea = false 
             };
             try
             {// tests it 
-                // i added this becuase it was throwing errors on build, with out this it will try and create mutilpe legend when display mutilple inputs on a graph
+                // i added this becuase it was throwing errors on build, with out this it will try and create mutilpe legend when mutiple series are displayed on a graph 
                 graph.Legends.Add(legend);
                 legend.BackColor = System.Drawing.Color.LightGray;
             }
@@ -132,6 +132,7 @@ namespace Money_Castle
             chtCost.Series.Clear();
             chtDebt.Series.Clear();
             chtTotal.Series.Clear();
+            // clears all pre-existing series on graphs to repopulate them with new updated series
             if (File.Exists(Login.UserDetailPath))
             { // if the user detail file exists it will read it 
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
@@ -143,7 +144,7 @@ namespace Money_Castle
 
 
                 switch (lines[1])
-                {// checks the index of lines[1] for a pay period 
+                {// checks the index of lines[1] for a pay period, each period changes the case of the switch case 
                     case "Weekly":
                         // when found it will calculate total income, monthly income after tax, display tax using the tax funtionn and display net income
                         total = income * 55;
@@ -209,12 +210,12 @@ namespace Money_Castle
                         MonthlyTotal monthlyTotal = monthlyTotals.Find(mt => mt.Month == monthKey);
                         if (monthlyTotal != null)
                         {
-                            // Add cost to the existing entry
+                            // Adds cost to the existing entry
                             monthlyTotal.TotalCost += cost;
                         }
                         else
                         {
-                            // Create a new entry for the month
+                            // create a new entry for the month
                             monthlyTotals.Add(new MonthlyTotal { Month = monthKey, TotalCost = cost });
                         }
                         StoreTotal storeTotal = storeTotals.Find(st => st.Store.Equals(storeName, StringComparison.OrdinalIgnoreCase));
@@ -225,7 +226,7 @@ namespace Money_Castle
                             storeTotals.Add(new StoreTotal { Store = storeName, TotalCost = cost });
                         }
                         else 
-                        { 
+                        {   // Adds cost to an existing entry
                             storeTotal.TotalCost += cost;
                         }
 

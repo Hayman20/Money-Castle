@@ -124,7 +124,7 @@
             chtDebt.Size = new Size(412, 395);
             chtDebt.TabIndex = 14;
             title1.Name = "Title1";
-            title1.Text = "Debt vs Time";
+            title1.Text = "Debt vs Time based off minimum payments";
             chtDebt.Titles.Add(title1);
             chtDebt.Click += chtDebt_Click;
             // 

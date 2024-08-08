@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAUVJREFUeF7t
+        muENgjAQRhnFURzFTRzFURzFnyBIHEF7elU8LhhMoWDeS+7X0fLx0AalBQAAAABMSFleN2V92Y2qMEaH
+        rx+5oKpub2NKxujw9fN3Asqm2Y6qc7v3LnKoZIw711DN8bWRE3mBl1CSTWNOBwIQgIDtuW4Psbwg3X7K
+        CnOfhs6V5dnBBqrqy1FbyZG57fm0lQ8bCAEIQEBPgF04HwtWZ8X+1o+sV4DzW6D7rP+tH0EAAhCAAHuc
+        tvJhAyEAAQhAgLZeIAABCECAPQ4BCEAAArSNAAQg4N8FNPI+UcK/y/4rPNSPPHuf59NWPmwgCamt5CAA
+        AQhYhwBZwaeoMH9vf4DGyId3V2ask8bIxy9b4FKVvETVGPmQbSkhTO+jOUPlv/sRkSB3wwk5UYV1Zol7
+        iSWUt3glLecJEQAAAABGUxR3wQy00gMaIAsAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

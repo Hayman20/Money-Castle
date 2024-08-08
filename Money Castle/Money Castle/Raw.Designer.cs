@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Raw_data));
             lblDebtotal = new Label();
             lblDebtPaid = new Label();
             lblDebt = new Label();
@@ -46,6 +47,7 @@
             cmbSort = new ComboBox();
             btnGraph = new Button();
             label3 = new Label();
+            btnDelete = new Button();
             SuspendLayout();
             // 
             // lblDebtotal
@@ -214,7 +216,7 @@
             btnGraph.ForeColor = SystemColors.ButtonHighlight;
             btnGraph.Image = Properties.Resources.signal_cellular_alt_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnGraph.ImageAlign = ContentAlignment.MiddleRight;
-            btnGraph.Location = new Point(294, 286);
+            btnGraph.Location = new Point(241, 286);
             btnGraph.Margin = new Padding(3, 2, 3, 2);
             btnGraph.Name = "btnGraph";
             btnGraph.Size = new Size(133, 56);
@@ -234,12 +236,29 @@
             label3.TabIndex = 23;
             label3.Text = "Sort by:";
             // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = SystemColors.InactiveCaptionText;
+            btnDelete.ForeColor = SystemColors.ButtonHighlight;
+            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.ImageAlign = ContentAlignment.MiddleRight;
+            btnDelete.Location = new Point(401, 286);
+            btnDelete.Margin = new Padding(3, 2, 3, 2);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(133, 56);
+            btnDelete.TabIndex = 24;
+            btnDelete.Text = "Delete Cost";
+            btnDelete.TextAlign = ContentAlignment.MiddleLeft;
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // Raw_data
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.WindowText;
             ClientSize = new Size(700, 376);
+            Controls.Add(btnDelete);
             Controls.Add(label3);
             Controls.Add(btnGraph);
             Controls.Add(cmbSort);
@@ -283,5 +302,6 @@
         private ComboBox cmbSort;
         private Button btnGraph;
         private Label label3;
+        private Button btnDelete;
     }
 }

@@ -1,7 +1,4 @@
-07/2023,Stan,150,Entertainment
-07/2024,7/11,1,Food
 07/2024,Laser tag,123,Entertainment
-07/2024,Netflix,1,Bills 
 07/2024,Netflix,23,Bills 
 07/2024,Netflix,23,Bills 
 07/2024,Netflix,23,Bills 
