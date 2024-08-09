@@ -1,2 +1,6 @@
+07/2024,the ,123,Food
+07/2024,the ,123,Food
+07/2024,the ,123,Food
+07/2024,the ,123,Food
 08/2024,KFC,26,Food
 08/2024,Netflix,100,Entertainment

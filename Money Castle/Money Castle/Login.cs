@@ -82,7 +82,6 @@ namespace Money_Castle
                 // Read and encrypt the data
                 fsIn.CopyTo(cs);
 
-                // It's important to flush and close the CryptoStream
                 cs.FlushFinalBlock();
                
 
@@ -94,10 +93,10 @@ namespace Money_Castle
                     // Read the encrypted file
                     byte[] encryptedData = File.ReadAllBytes(outputFile);
 
-                    // Convert to Base64 string
+                    // convert to Base64 string
                     string base64String = Convert.ToBase64String(encryptedData);
 
-                    // Write the Base64 string to a text file
+                    // write the Base64 string to a text file
                     File.WriteAllText(path, base64String);
                 }
                 catch (Exception ex)
@@ -114,27 +113,27 @@ namespace Money_Castle
         {
             try
             {
-                // Read the Base64 string from the input text file
+                // Reads the Base64 string from the input text file
                 string base64String = File.ReadAllText(inputFile);
 
-                // Convert Base64 string back to byte array
+                // convert Base64 string back to byte array
                 byte[] encryptedData = Convert.FromBase64String(base64String);
 
                 using MemoryStream msCrypt = new MemoryStream(encryptedData);
 
                 // Read the IV from the beginning of the decrypted byte array
-                byte[] iv = new byte[16]; // AES block size is 16 bytes
+                byte[] iv = new byte[16]; 
                 msCrypt.Read(iv, 0, iv.Length);
 
                 using Aes aes = Aes.Create();
                 aes.Key = key;
                 aes.IV = iv;
 
-                // Create the CryptoStream for decryption
+                // Creates the CryptoStream for decryption
                 using CryptoStream cs = new CryptoStream(msCrypt, aes.CreateDecryptor(), CryptoStreamMode.Read);
                 using FileStream fsOut = new FileStream(outputFile, FileMode.Create);
 
-                // Read from the CryptoStream and write to the output file
+                // Reads from the CryptoStream and write to the output file
                 cs.CopyTo(fsOut);
             }
             catch (Exception ex)
@@ -198,6 +197,8 @@ namespace Money_Castle
                         view.Closed += (s, args) => this.Close();
                         // hides the login and opens the details form, mapping login to it so the mian form can close
                         File.Delete(temppath);
+                        txtPassword.Text = "";
+                        txtUsername.Text = "";
 
 
 

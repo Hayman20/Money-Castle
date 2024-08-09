@@ -81,7 +81,7 @@ namespace Money_Castle
                 IsXValueIndexed = true,
                 ChartType = type,
                 BorderWidth = 2,
-                IsValueShownAsLabel = true,
+                IsValueShownAsLabel = false,
                 LabelBackColor = colour,
                 LabelBorderWidth = 1,
 
@@ -257,15 +257,16 @@ namespace Money_Castle
                     }
                     double[] y = temp_y.ToArray();
                     //coverts list to array
-                    double min;
+                    double min = 0;
                     if (costs.Min() > gross.Min())
                     {   // finds the array with the lowest number so the y min can be set
-                        min = Math.Round(gross.Min());
+                        min = Math.Round(gross.Min(),000);
 
                     }
-                    else
+                    else if (costs.Min() < gross.Min())
                     {
-                        min = Math.Round(costs.Min());
+                        min = Math.Round(costs.Min(),000);
+
                     }
                     // converts all the lists to an array  Math.Round(gross.Min())
                     Graph("cost", months, costs, chtCost, Color.Red, SeriesChartType.Line, min, Math.Round(costs.Max()));

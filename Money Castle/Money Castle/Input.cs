@@ -73,13 +73,13 @@ namespace Money_Castle
             */
             string costs = date + "," + store + "," + cost + "," + type;
             // checks if any of the inputs are empty
-            if (income == null |   savingAmount == null | savingDes == null | debtAmount == null | debtDes == null | debtPaid == null | debtPay == null)
+            if (income == "" |   savingAmount == "" | savingDes == "" | debtAmount == "" | debtDes == "" | debtPaid == "" | debtPay == "")
             {
                 MessageBox.Show("Please fill all boxes");
             }
 
             // checks if some of the inputs are only numbers 
-            else if (!float.TryParse(income, out float test) | !float.TryParse(savingAmount, out float test2) | !float.TryParse(debtAmount, out float test3) | !float.TryParse(debtPaid, out float test4))
+            else if (!float.TryParse(income, out float test) | !float.TryParse(savingAmount, out float test2) | !float.TryParse(debtAmount, out float test3) | !float.TryParse(debtPaid, out float test4)| !float.TryParse(debtPay, out float test5))
 
             {
                 MessageBox.Show("please only use numbers for income/cost/savings/debts");

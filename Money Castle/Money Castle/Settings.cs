@@ -16,7 +16,11 @@ namespace Money_Castle
         {
             InitializeComponent();
         }
-
+        /* this form was in my design but during creation of my solution
+         * it was found that all three of my ideas for settings were
+         * impossoble with my level of skill and knewledge so it's functionality
+         * was cut from the final solution  
+         */
         private void btnDetails_Click(object sender, EventArgs e)
         {
             Login.open(Login.view, Login.settings);
@@ -59,9 +63,13 @@ namespace Money_Castle
                 Login.settings.BackColor = Color.White;
                 Login.view.ForeColor = Color.Black;
                 Login.view.BackColor = Color.White;
-                
+
             }
         }
-           
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

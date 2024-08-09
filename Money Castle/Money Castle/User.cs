@@ -51,13 +51,14 @@ namespace Money_Castle
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Login.open(Login.login, Login.settings);
+            Login.open(Login.login, Login.use);
 
         }
 
         private void User_Load(object sender, EventArgs e)
         {
-            string[] s = File.ReadAllLines(Login.path);
+            Login.DecryptFile(Login.path, Login.temppath);
+            string[] s = File.ReadAllLines(Login.temppath);
             foreach (string a in s)
             {   // checks the users file for the user's info to be displayed
                 string[] users = a.Split(",");
@@ -65,6 +66,7 @@ namespace Money_Castle
                 {
                     lblUser.Text = users[0];
                     lblDate.Text = users[2];
+                    File.Delete(Login.temppath);
                 }
             }
             if (File.Exists(Login.UserDetailPath))
@@ -74,7 +76,7 @@ namespace Money_Castle
                 lblIncome.Text = "$" + lines[0] + " " + lines[1];
                 lblPercent.Text = lines[4] + "%";
                 lblSaving.Text = "$" + lines[3];
-                lblDebt.Text = "$" + lines[5];
+                lblDebt.Text = "$" + (int.Parse(lines[6]) - int.Parse(lines[7]));
 
 
             }
@@ -83,6 +85,33 @@ namespace Money_Castle
         private void btnChange_Click(object sender, EventArgs e)
         {
             Login.change.ShowDialog();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            Login.DecryptFile(Login.path, Login.temppath);
+            string[] s = File.ReadAllLines(Login.temppath);
+            foreach (string a in s)
+            {   // checks the users file for the user's info to be displayed
+                string[] users = a.Split(",");
+                if (users[0] == Login.username)
+                {
+                    lblUser.Text = users[0];
+                    lblDate.Text = users[2];
+                    File.Delete(Login.temppath);
+                }
+            }
+            if (File.Exists(Login.UserDetailPath))
+            {//checks the user's details file for info to display
+                string[] line = File.ReadAllLines(Login.UserDetailPath);
+                string[] lines = line[0].Split(',');
+                lblIncome.Text = "$" + lines[0] + " " + lines[1];
+                lblPercent.Text = lines[4] + "%";
+                lblSaving.Text = "$" + lines[3];
+                lblDebt.Text = "$" + (int.Parse(lines[6]) - int.Parse(lines[7]));
+
+
+            }
         }
     }
 }

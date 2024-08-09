@@ -51,8 +51,9 @@ namespace Money_Castle
                         {// if the username is already in use it will make exists true
 
                             exists = true;
-                            break;
                             File.Delete(Login.temppath);
+
+                            break;
                         }
 
 
