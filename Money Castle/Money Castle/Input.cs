@@ -172,7 +172,7 @@ namespace Money_Castle
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Login.open(Login.login, Login.input);
         }
     }
 }

@@ -37,22 +37,27 @@ namespace Money_Castle
             int user_id=1;
             if (File.Exists(path))
             {// if the file exists it will save to the file, if it doesn't it will create a new one at the path location
-                Login.DecryptFile("test.txt",path);
-                string[] lines = File.ReadAllLines(path);
-                foreach (string line in lines)
-                {// reads each line in the users text file
-                    user_id++;
-                    string[] users = line.Split(",");
-                    if (users[0] == txtUsername.Text)
-                    {// if the username is already in use it will make exists true
+                Login.DecryptFile(path, Login.temppath);
 
-                        exists = true;
-                        File.Delete(path);
-                        break;
+                if (File.Exists(Login.temppath))
+                {
+
+                    string[] lines = File.ReadAllLines(Login.temppath);
+                    foreach (string line in lines)
+                    {// reads each line in the users text file
+                        user_id++;
+                        string[] users = line.Split(",");
+                        if (users[0] == txtUsername.Text)
+                        {// if the username is already in use it will make exists true
+
+                            exists = true;
+                            break;
+                            File.Delete(Login.temppath);
+                        }
+
+
+
                     }
-                  
-
-
                 }
             }
             if (exists==true) 
@@ -71,14 +76,13 @@ namespace Money_Castle
             else
             { 
                 string record = user + "," + pass + ',' + date + "," + user_id;
-                using (TextWriter tw = new StreamWriter(path, true))
+                using (TextWriter tw = new StreamWriter(Login.temppath, true))
                 {// creates a record out of the inputed data to be saved into the users text file
                     tw.WriteLine(record);
                     MessageBox.Show("Added to file");
                     tw.Close();
-                    Login.EncryptFile(path,"test.txt");
-                    File.Delete(path);
-
+                    Login.EncryptFile(Login.temppath,path);
+                    File.Delete(Login.temppath);
 
 
                 }

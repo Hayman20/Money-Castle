@@ -43,7 +43,7 @@ namespace Money_Castle
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Login.open(Login.login, Login.settings);
         }
 
         private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)

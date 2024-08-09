@@ -40,5 +40,11 @@ namespace Money_Castle
             Login.open(Login.settings, Login.help);
 
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.login, Login.help);
+
+        }
     }
 }

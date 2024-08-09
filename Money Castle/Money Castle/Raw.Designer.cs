@@ -54,9 +54,9 @@
             // 
             lblDebtotal.AutoSize = true;
             lblDebtotal.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDebtotal.Location = new Point(229, 8);
+            lblDebtotal.Location = new Point(262, 11);
             lblDebtotal.Name = "lblDebtotal";
-            lblDebtotal.Size = new Size(56, 25);
+            lblDebtotal.Size = new Size(69, 31);
             lblDebtotal.TabIndex = 0;
             lblDebtotal.Text = "Debt:";
             // 
@@ -64,27 +64,27 @@
             // 
             lblDebtPaid.AutoSize = true;
             lblDebtPaid.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDebtPaid.Location = new Point(155, 39);
+            lblDebtPaid.Location = new Point(177, 52);
             lblDebtPaid.Name = "lblDebtPaid";
-            lblDebtPaid.Size = new Size(126, 25);
+            lblDebtPaid.Size = new Size(154, 31);
             lblDebtPaid.TabIndex = 1;
             lblDebtPaid.Text = "Debt paid off:";
             // 
             // lblDebt
             // 
             lblDebt.AutoSize = true;
-            lblDebt.Location = new Point(294, 13);
+            lblDebt.Location = new Point(336, 17);
             lblDebt.Name = "lblDebt";
-            lblDebt.Size = new Size(31, 15);
+            lblDebt.Size = new Size(40, 20);
             lblDebt.TabIndex = 2;
             lblDebt.Text = "debt";
             // 
             // lblPaid
             // 
             lblPaid.AutoSize = true;
-            lblPaid.Location = new Point(294, 47);
+            lblPaid.Location = new Point(336, 63);
             lblPaid.Name = "lblPaid";
-            lblPaid.Size = new Size(31, 15);
+            lblPaid.Size = new Size(40, 20);
             lblPaid.TabIndex = 3;
             lblPaid.Text = "debt";
             // 
@@ -92,10 +92,9 @@
             // 
             lsvOutput.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             lsvOutput.ForeColor = SystemColors.MenuText;
-            lsvOutput.Location = new Point(139, 92);
-            lsvOutput.Margin = new Padding(3, 2, 3, 2);
+            lsvOutput.Location = new Point(159, 123);
             lsvOutput.Name = "lsvOutput";
-            lsvOutput.Size = new Size(478, 132);
+            lsvOutput.Size = new Size(546, 175);
             lsvOutput.TabIndex = 4;
             lsvOutput.UseCompatibleStateImageBehavior = false;
             lsvOutput.View = System.Windows.Forms.View.Details;
@@ -125,65 +124,65 @@
             // 
             btnLogout.BackColor = SystemColors.ControlText;
             btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnLogout.Location = new Point(18, 314);
-            btnLogout.Margin = new Padding(3, 2, 3, 2);
+            btnLogout.Location = new Point(21, 419);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(66, 46);
+            btnLogout.Size = new Size(75, 61);
             btnLogout.TabIndex = 19;
             btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnSetting
             // 
             btnSetting.BackColor = SystemColors.ControlText;
             btnSetting.Image = Properties.Resources.settings_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnSetting.Location = new Point(18, 252);
-            btnSetting.Margin = new Padding(3, 2, 3, 2);
+            btnSetting.Location = new Point(21, 336);
             btnSetting.Name = "btnSetting";
-            btnSetting.Size = new Size(66, 51);
+            btnSetting.Size = new Size(75, 68);
             btnSetting.TabIndex = 18;
             btnSetting.UseVisualStyleBackColor = false;
+            btnSetting.Click += btnSetting_Click;
             // 
             // btnHelp
             // 
             btnHelp.BackColor = SystemColors.ControlText;
             btnHelp.Image = Properties.Resources.info_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnHelp.ImageAlign = ContentAlignment.MiddleRight;
-            btnHelp.Location = new Point(-2, 183);
-            btnHelp.Margin = new Padding(3, 2, 3, 2);
+            btnHelp.Location = new Point(-2, 244);
             btnHelp.Name = "btnHelp";
-            btnHelp.Size = new Size(104, 64);
+            btnHelp.Size = new Size(119, 85);
             btnHelp.TabIndex = 17;
             btnHelp.Text = "Help";
             btnHelp.TextAlign = ContentAlignment.MiddleLeft;
             btnHelp.UseVisualStyleBackColor = false;
+            btnHelp.Click += btnHelp_Click;
             // 
             // btnUser
             // 
             btnUser.BackColor = SystemColors.ControlText;
             btnUser.Image = Properties.Resources.badge_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnUser.ImageAlign = ContentAlignment.MiddleRight;
-            btnUser.Location = new Point(-2, 122);
-            btnUser.Margin = new Padding(3, 2, 3, 2);
+            btnUser.Location = new Point(-2, 163);
             btnUser.Name = "btnUser";
-            btnUser.Size = new Size(104, 64);
+            btnUser.Size = new Size(119, 85);
             btnUser.TabIndex = 16;
             btnUser.Text = "User";
             btnUser.TextAlign = ContentAlignment.MiddleLeft;
             btnUser.UseVisualStyleBackColor = false;
+            btnUser.Click += btnUser_Click;
             // 
             // btnInput
             // 
             btnInput.BackColor = SystemColors.ControlText;
             btnInput.Image = Properties.Resources.upload_file_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnInput.ImageAlign = ContentAlignment.MiddleRight;
-            btnInput.Location = new Point(-2, 61);
-            btnInput.Margin = new Padding(3, 2, 3, 2);
+            btnInput.Location = new Point(-2, 81);
             btnInput.Name = "btnInput";
-            btnInput.Size = new Size(104, 64);
+            btnInput.Size = new Size(119, 85);
             btnInput.TabIndex = 15;
             btnInput.Text = "Input";
             btnInput.TextAlign = ContentAlignment.MiddleLeft;
             btnInput.UseVisualStyleBackColor = false;
+            btnInput.Click += btnInput_Click;
             // 
             // btnDetails
             // 
@@ -191,22 +190,21 @@
             btnDetails.Image = Properties.Resources.trending_up_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnDetails.ImageAlign = ContentAlignment.MiddleRight;
             btnDetails.Location = new Point(-2, -1);
-            btnDetails.Margin = new Padding(3, 2, 3, 2);
             btnDetails.Name = "btnDetails";
-            btnDetails.Size = new Size(104, 64);
+            btnDetails.Size = new Size(119, 85);
             btnDetails.TabIndex = 14;
             btnDetails.Text = "Details";
             btnDetails.TextAlign = ContentAlignment.MiddleLeft;
             btnDetails.UseVisualStyleBackColor = false;
+            btnDetails.Click += btnDetails_Click;
             // 
             // cmbSort
             // 
             cmbSort.FormattingEnabled = true;
             cmbSort.Items.AddRange(new object[] { "Type", "Date", "Store" });
-            cmbSort.Location = new Point(333, 259);
-            cmbSort.Margin = new Padding(3, 2, 3, 2);
+            cmbSort.Location = new Point(381, 345);
             cmbSort.Name = "cmbSort";
-            cmbSort.Size = new Size(133, 23);
+            cmbSort.Size = new Size(151, 28);
             cmbSort.TabIndex = 21;
             cmbSort.SelectedIndexChanged += cmbSort_SelectedIndexChanged;
             // 
@@ -216,10 +214,9 @@
             btnGraph.ForeColor = SystemColors.ButtonHighlight;
             btnGraph.Image = Properties.Resources.signal_cellular_alt_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnGraph.ImageAlign = ContentAlignment.MiddleRight;
-            btnGraph.Location = new Point(241, 286);
-            btnGraph.Margin = new Padding(3, 2, 3, 2);
+            btnGraph.Location = new Point(275, 381);
             btnGraph.Name = "btnGraph";
-            btnGraph.Size = new Size(133, 56);
+            btnGraph.Size = new Size(152, 75);
             btnGraph.TabIndex = 22;
             btnGraph.Text = "View Graphs";
             btnGraph.TextAlign = ContentAlignment.MiddleLeft;
@@ -230,9 +227,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(268, 258);
+            label3.Location = new Point(306, 344);
             label3.Name = "label3";
-            label3.Size = new Size(59, 20);
+            label3.Size = new Size(75, 25);
             label3.TabIndex = 23;
             label3.Text = "Sort by:";
             // 
@@ -242,10 +239,9 @@
             btnDelete.ForeColor = SystemColors.ButtonHighlight;
             btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
             btnDelete.ImageAlign = ContentAlignment.MiddleRight;
-            btnDelete.Location = new Point(401, 286);
-            btnDelete.Margin = new Padding(3, 2, 3, 2);
+            btnDelete.Location = new Point(458, 381);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(133, 56);
+            btnDelete.Size = new Size(152, 75);
             btnDelete.TabIndex = 24;
             btnDelete.Text = "Delete Cost";
             btnDelete.TextAlign = ContentAlignment.MiddleLeft;
@@ -254,10 +250,10 @@
             // 
             // Raw_data
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.WindowText;
-            ClientSize = new Size(700, 376);
+            ClientSize = new Size(800, 501);
             Controls.Add(btnDelete);
             Controls.Add(label3);
             Controls.Add(btnGraph);
@@ -274,7 +270,6 @@
             Controls.Add(lblDebtPaid);
             Controls.Add(lblDebtotal);
             ForeColor = SystemColors.ControlLightLight;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Raw_data";
             Text = "Raw data";
             Load += Raw_data_Load;

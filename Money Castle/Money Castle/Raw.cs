@@ -27,7 +27,7 @@ namespace Money_Castle
         }
 
         private void Raw_data_Load(object sender, EventArgs e)
-        {   
+        {
             if (File.Exists(Login.UserDetailPath))
             {// if the file exists it will populate the lables with the debt data from it
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
@@ -113,16 +113,16 @@ namespace Money_Castle
         {
             if (lsvOutput.SelectedItems.Count > 0)
             {   // if something in the list view box is selected
-               var delete = (lsvOutput.SelectedItems[0]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[1]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[2]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[3]).Text;
+                var delete = (lsvOutput.SelectedItems[0]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[1]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[2]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[3]).Text;
                 // reads all items in the selected entry and adds it to a delete varible to reduce mutiple entrys from being deleted for having the same date or store
-               var tempFile = Path.GetTempFileName();//creats a temp file path
-                                                     //MessageBox.Show(delele);
-                                                     // error testing
+                var tempFile = Path.GetTempFileName();//creats a temp file path
+                                                      //MessageBox.Show(delele);
+                                                      // error testing
                 var linesToKeep = File.ReadLines(Login.CostsPath).Where(l => l != delete);
                 //if the line read doesn't match delete it is kept
 
                 File.WriteAllLines(tempFile, linesToKeep);
-               // writes all the saved lines to a temp file
+                // writes all the saved lines to a temp file
                 File.Delete(Login.CostsPath);
                 //deletes the origial file
                 File.Move(tempFile, Login.CostsPath);
@@ -132,7 +132,7 @@ namespace Money_Castle
 
 
             }
-            else 
+            else
             {
                 MessageBox.Show("Please select a record");
             }
@@ -141,6 +141,40 @@ namespace Money_Castle
 
         }
 
-       
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.login, Login.raw_Data);
+
+        }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.view, Login.raw_Data);
+
+        }
+
+        private void btnInput_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.input, Login.raw_Data);
+
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.use, Login.raw_Data);
+
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.help, Login.raw_Data);
+
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.settings, Login.raw_Data);
+
+        }
     }
 }

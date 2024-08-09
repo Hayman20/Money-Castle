@@ -37,6 +37,7 @@ namespace Money_Castle
 
 
         public static string path = "User.txt";
+        public static string temppath = "temp.txt";
         public static byte[] key = { 0x02, 0x03, 0x01, 0x03, 0x03, 0x07, 0x07, 0x08, 0x09, 0x09, 0x11, 0x11, 0x16, 0x17, 0x19, 0x16 };
 
         public Login()
@@ -65,27 +66,44 @@ namespace Money_Castle
                 aes.Key = key;
 
                 // store IV
+                aes.GenerateIV();
+
                 byte[] iv = aes.IV;
                
                 string cryptFile = outputFile;
                 FileStream fsCrypt = new FileStream(cryptFile, FileMode.Create);
 
-                RijndaelManaged RMCrypto = new RijndaelManaged();
+                fsCrypt.Write(iv, 0, iv.Length);
 
-                CryptoStream cs = new CryptoStream(fsCrypt,
-                    RMCrypto.CreateEncryptor(key, key),
-                    CryptoStreamMode.Write);
 
-                FileStream fsIn = new FileStream(inputFile, FileMode.Open);
+                using CryptoStream cs = new CryptoStream(fsCrypt, aes.CreateEncryptor(), CryptoStreamMode.Write);
+                using FileStream fsIn = new FileStream(inputFile, FileMode.Open);
 
-                int data;
-                while ((data = fsIn.ReadByte()) != -1)
-                    cs.WriteByte((byte)data);
+                // Read and encrypt the data
+                fsIn.CopyTo(cs);
 
+                // It's important to flush and close the CryptoStream
+                cs.FlushFinalBlock();
+               
 
                 fsIn.Close();
                 cs.Close();
                 fsCrypt.Close();
+                try
+                {
+                    // Read the encrypted file
+                    byte[] encryptedData = File.ReadAllBytes(outputFile);
+
+                    // Convert to Base64 string
+                    string base64String = Convert.ToBase64String(encryptedData);
+
+                    // Write the Base64 string to a text file
+                    File.WriteAllText(path, base64String);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to convert to Base64! {ex.Message}", "Error");
+                }
             }
             catch
             {
@@ -94,33 +112,38 @@ namespace Money_Castle
         }
         public static void DecryptFile(string inputFile, string outputFile)
         {
-            //https://www.codeproject.com/Articles/26085/File-Encryption-and-Decryption-in-C    
+            try
             {
+                // Read the Base64 string from the input text file
+                string base64String = File.ReadAllText(inputFile);
+
+                // Convert Base64 string back to byte array
+                byte[] encryptedData = Convert.FromBase64String(base64String);
+
+                using MemoryStream msCrypt = new MemoryStream(encryptedData);
+
+                // Read the IV from the beginning of the decrypted byte array
+                byte[] iv = new byte[16]; // AES block size is 16 bytes
+                msCrypt.Read(iv, 0, iv.Length);
+
                 using Aes aes = Aes.Create();
                 aes.Key = key;
+                aes.IV = iv;
 
-                // store IV
-                byte[] iv = aes.IV;
-                FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
+                // Create the CryptoStream for decryption
+                using CryptoStream cs = new CryptoStream(msCrypt, aes.CreateDecryptor(), CryptoStreamMode.Read);
+                using FileStream fsOut = new FileStream(outputFile, FileMode.Create);
 
-                RijndaelManaged RMCrypto = new RijndaelManaged();
-
-                CryptoStream cs = new CryptoStream(fsCrypt,
-                    RMCrypto.CreateDecryptor(key, key),
-                    CryptoStreamMode.Read);
-
-                FileStream fsOut = new FileStream(outputFile, FileMode.Create);
-
-                int data;
-                while ((data = cs.ReadByte()) != -1)
-                    fsOut.WriteByte((byte)data);
-
-                fsOut.Close();
-                cs.Close();
-                fsCrypt.Close();
-
+                // Read from the CryptoStream and write to the output file
+                cs.CopyTo(fsOut);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Decryption failed! {ex.Message}", "Error");
             }
         }
+      
+
 
         private void btnSignup_Click(object sender, EventArgs e)
         {
@@ -140,16 +163,16 @@ namespace Money_Castle
             string pass = txtPassword.Text;
             string user = txtUsername.Text;
             bool match = false;
-            Login.DecryptFile("test.txt", path);
+            Login.DecryptFile(path, temppath);
             if (user == "" | pass == "")
             { // checks if the user and pass inputs are empty/null
                 //if they are it will throw a error message to the user
                 MessageBox.Show("please enter a password and username.");
             }
 
-            else if (File.Exists(path))
+            else if (File.Exists(temppath))
             {// checks if the file exists
-                string[] lines = File.ReadAllLines(path);
+                string[] lines = File.ReadAllLines(temppath);
                 // creates a array of all lines in file 
                 foreach (string line in lines)
                 {   // for each item in the array lines it will run this 
@@ -173,9 +196,8 @@ namespace Money_Castle
                         view.Show();
                         this.Hide();
                         view.Closed += (s, args) => this.Close();
-                        File.Delete(path);
                         // hides the login and opens the details form, mapping login to it so the mian form can close
-
+                        File.Delete(temppath);
 
 
 
