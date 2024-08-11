@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 namespace Money_Castle
 {
     public partial class Sign_up : Form
-    {
+    {       // defines the path varible as the path varilbe from Login.cs
         public string path = Login.path;
         public Sign_up()
         {

@@ -52,19 +52,18 @@ namespace Money_Castle
 
         private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbColour.Text == "Dark Mode")
-            {
-                Login.settings.ForeColor = Color.White;
-                Login.settings.BackColor = Color.Black;
-            }
-            else if (cmbColour.Text == "Light Mode")
-            {
-                Login.settings.ForeColor = Color.Black;
-                Login.settings.BackColor = Color.White;
-                Login.view.ForeColor = Color.Black;
-                Login.view.BackColor = Color.White;
-
-            }
+           // if (cmbColour.Text == "Dark Mode")
+            //{
+             //   Login.settings.ForeColor = Color.White;
+              //  Login.settings.BackColor = Color.Black;
+            //}
+            //else if (cmbColour.Text == "Light Mode")
+            //{
+             // /  Login.settings.ForeColor = Color.Black;
+              // / Login.settings.BackColor = Color.White;
+               // Login.view.ForeColor = Color.Black;
+                //Login.view.BackColor = Color.White;
+           // }
         }
 
         private void Settings_Load(object sender, EventArgs e)
