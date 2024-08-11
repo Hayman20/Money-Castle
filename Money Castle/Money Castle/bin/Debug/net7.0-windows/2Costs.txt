@@ -1,4 +1,3 @@
-07/2024,Laser tag,123,Entertainment
 07/2024,Netflix,23,Bills 
 07/2024,Netflix,23,Bills 
 07/2024,Netflix,23,Bills 

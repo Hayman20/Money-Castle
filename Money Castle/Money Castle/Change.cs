@@ -19,14 +19,14 @@ namespace Money_Castle
         }
 
         private void btnBack_Click(object sender, EventArgs e)
-        {
+        {   // closes this form 
             this.Close();
         }
 
         private void btnChange_Click(object sender, EventArgs e)
         {
             if (txtPassword.Text != "" && txtOld.Text != ""&& txtConform.Text != "")
-            {
+            {   // if non of the input areas are empty it will run
                 Login.DecryptFile(Login.path, Login.temppath);
                 string[] lines = File.ReadAllLines(Login.temppath);
                 int count = 0;
@@ -42,7 +42,7 @@ namespace Money_Castle
                         // defining a record to save
                         string record = users[0] + "," + users[1] + "," + users[2] + "," + users[3];
                         using (TextWriter tw = new StreamWriter(Login.temppath, true))
-                        {   // text at the index of count-1 is equal to the text of record
+                        {   // text at the index of count-1 is updated with the text of record
                             lines[count - 1] = record;
                             // makes update true to see if the file updated
                             update = true;
@@ -62,12 +62,12 @@ namespace Money_Castle
                     MessageBox.Show("Updated");
                 }
                 else
-                {   // validation one of the 4 tests don't match
+                {   // validation if one of the 3 tests don't match
                     MessageBox.Show("Password is wrong, or new one doesn't match");
                 }
             }
             else 
-            {
+            {   // if the input areas are emptry, throws error
                 MessageBox.Show("Please fill out all boxes");
             }
 

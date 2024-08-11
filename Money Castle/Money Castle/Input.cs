@@ -24,8 +24,9 @@ namespace Money_Castle
         private void Input_Load(object sender, EventArgs e)
         {
             dtpDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
+            //sets date time display to current date
             if (File.Exists(Login.UserDetailPath))
-            {
+            {   // reads the user detail file and displays everything to the correct position
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
                 string[] lines = line[0].Split(',');
                 txtIncome.Text = lines[0];
@@ -90,12 +91,12 @@ namespace Money_Castle
             }
             // once every thing is correct it will save it to two files 
             else
-            {   // adds a entry to the costs of the user
+            {   // adds a entry to the costs of the user, if all three cost fields aren't empty
                 if (cost != "" && store != "" && type != "")
                 {
 
                     if (float.TryParse(cost, out float test10))
-                    {
+                    {   // if cost is a number it will save the record to the file
                         using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
                         {
                             tw.WriteLine(costs);
@@ -133,12 +134,12 @@ namespace Money_Castle
                 File.Delete(Login.CostsPath);
                 File.WriteAllLines(Login.CostsPath, Allcosts);
                 if (worked)
-                {
+                {   // if one of the two data transfers worked it will be true and display a worked message
                     MessageBox.Show("File updated");
 
                 }
                 else 
-                {
+                {   // if non of the data trnasfers worked it will diplay a error message
                     MessageBox.Show("Something went wrong");
                 }
 

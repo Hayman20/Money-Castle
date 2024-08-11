@@ -15,6 +15,12 @@ using System.Security;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
+/*  Programmer: Haydn Alsop
+ *  Program discription: A financial app that help users buget for the furture
+ *  Completion date:09/08/2024
+ * 
+ * 
+ */
 
 namespace Money_Castle
 {
@@ -90,13 +96,13 @@ namespace Money_Castle
                 fsCrypt.Close();
                 try
                 {
-                    // Read the encrypted file
+                    // Reads the encrypted file
                     byte[] encryptedData = File.ReadAllBytes(outputFile);
 
-                    // convert to Base64 string
+                    // converts to Base64 string
                     string base64String = Convert.ToBase64String(encryptedData);
 
-                    // write the Base64 string to a text file
+                    // writes the Base64 string to a text file
                     File.WriteAllText(path, base64String);
                 }
                 catch (Exception ex)
@@ -210,7 +216,7 @@ namespace Money_Castle
 
                 }
                 if (match == false)
-                {
+                {// displays a error message if the info doesn't match the info saved on file.
                     MessageBox.Show("Wrong User info, please try again");
                 }
 

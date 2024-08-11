@@ -49,7 +49,7 @@ namespace Money_Castle
                     ListViewItem ListItem = new ListViewItem();
                     string[] items = line.Split(",");
                     for (int i = 0; i < items.Length; i++)
-                    {
+                    {   // reads each line of the file and displays it as a record, reads the whole
                         if (i == 0)
                         {
                             ListItem.Text = items[i];
@@ -113,11 +113,10 @@ namespace Money_Castle
         {
             if (lsvOutput.SelectedItems.Count > 0)
             {   // if something in the list view box is selected
-                var delete = (lsvOutput.SelectedItems[0]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[1]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[2]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[3]).Text;
+                string delete = (lsvOutput.SelectedItems[0]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[1]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[2]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[3]).Text;
                 // reads all items in the selected entry and adds it to a delete varible to reduce mutiple entrys from being deleted for having the same date or store
-                var tempFile = Path.GetTempFileName();//creats a temp file path
-                                                      //MessageBox.Show(delele);
-                                                      // error testing
+                string tempFile = Path.GetTempFileName();//creats a temp file path
+                                                      //MessageBox.Show(delele); error testing
                 var linesToKeep = File.ReadLines(Login.CostsPath).Where(l => l != delete);
                 //if the line read doesn't match delete it is kept
 
@@ -133,7 +132,7 @@ namespace Money_Castle
 
             }
             else
-            {
+            {   // if a record isn't selectd it will throw an error
                 MessageBox.Show("Please select a record");
             }
 

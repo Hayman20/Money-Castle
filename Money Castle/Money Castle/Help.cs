@@ -46,5 +46,10 @@ namespace Money_Castle
             Login.open(Login.login, Login.help);
 
         }
+
+        private void Help_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

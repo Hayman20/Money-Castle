@@ -70,7 +70,7 @@ namespace Money_Castle
         }
         private void Graph(string seriesName, string[] x, double[] y, Chart graph, Color colour, SeriesChartType type, double min, double max)
         {// defines the graph funtion that can be used to create most types of graphs
-
+            // i decided to make the method this flexible so it can be used in the future with any type of graph 
 
             // Create a new Series and set its properties
             Series series = new Series(seriesName)
@@ -120,8 +120,9 @@ namespace Money_Castle
             public string Month { get; set; }
             public float TotalCost { get; set; }
         }
-        class StoreTotal 
-        { 
+        class StoreTotal
+        {          // creates a class that has two list
+
             public string Store { get; set; }
 
             public float TotalCost { get; set; }
@@ -133,6 +134,7 @@ namespace Money_Castle
             chtDebt.Series.Clear();
             chtTotal.Series.Clear();
             // clears all pre-existing series on graphs to repopulate them with new updated series
+            // if the series aren't cleared it will throw an error because the graph has pre-existing series with the same name/inputs
             if (File.Exists(Login.UserDetailPath))
             { // if the user detail file exists it will read it 
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
@@ -302,6 +304,7 @@ namespace Money_Castle
                         var years = new List<string> { date.ToString("yyyy") };
                         int count = 0;
                         bool yearly = false;
+                        // defines and creates a ton of different varibles to be used in graph creation
                         while (debttotal >= 0)
                         {// runs untill debt total is equal or less than 0, 
                          // this is used to find how long monthly or yearly it will take to pay off the debt
