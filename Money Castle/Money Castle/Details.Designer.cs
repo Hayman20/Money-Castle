@@ -60,20 +60,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(451, 16);
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(531, 26);
             label1.Name = "label1";
-            label1.Size = new Size(52, 32);
+            label1.Size = new Size(74, 46);
             label1.TabIndex = 3;
             label1.Text = "Tax:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(412, 57);
+            label2.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(468, 72);
             label2.Name = "label2";
-            label2.Size = new Size(98, 32);
+            label2.Size = new Size(138, 46);
             label2.TabIndex = 4;
             label2.Text = "Income:";
             // 
@@ -81,9 +81,9 @@
             // 
             lblIncome.AutoSize = true;
             lblIncome.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lblIncome.Location = new Point(526, 57);
+            lblIncome.Location = new Point(601, 76);
             lblIncome.Name = "lblIncome";
-            lblIncome.Size = new Size(93, 32);
+            lblIncome.Size = new Size(116, 41);
             lblIncome.TabIndex = 5;
             lblIncome.Text = "income";
             // 
@@ -91,9 +91,9 @@
             // 
             lblTax.AutoSize = true;
             lblTax.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTax.Location = new Point(526, 16);
+            lblTax.Location = new Point(613, 29);
             lblTax.Name = "lblTax";
-            lblTax.Size = new Size(45, 32);
+            lblTax.Size = new Size(57, 41);
             lblTax.TabIndex = 6;
             lblTax.Text = "tax";
             lblTax.Click += lblTax_Click;
@@ -104,10 +104,9 @@
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Image = Properties.Resources.monitoring_20dp_FILL0_wght400_GRAD0_opsz20;
             button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(465, 562);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(531, 749);
             button1.Name = "button1";
-            button1.Size = new Size(167, 40);
+            button1.Size = new Size(191, 53);
             button1.TabIndex = 7;
             button1.Text = "View raw data";
             button1.TextAlign = ContentAlignment.MiddleLeft;
@@ -116,13 +115,16 @@
             // 
             // chtDebt
             // 
+            chtDebt.BackColor = Color.FromArgb(64, 64, 64);
+            chtDebt.BorderlineColor = Color.Black;
+            chartArea1.BorderColor = Color.IndianRed;
             chartArea1.Name = "ChartArea1";
             chtDebt.ChartAreas.Add(chartArea1);
-            chtDebt.Location = new Point(118, 137);
-            chtDebt.Margin = new Padding(3, 2, 3, 2);
+            chtDebt.Location = new Point(135, 183);
             chtDebt.Name = "chtDebt";
-            chtDebt.Size = new Size(412, 395);
+            chtDebt.Size = new Size(471, 527);
             chtDebt.TabIndex = 14;
+            title1.ForeColor = Color.White;
             title1.Name = "Title1";
             title1.Text = "Debt vs Time based off minimum payments";
             chtDebt.Titles.Add(title1);
@@ -130,16 +132,18 @@
             // 
             // chtCost
             // 
-            chartArea2.BackColor = Color.FromArgb(255, 224, 192);
+            chtCost.BackColor = Color.FromArgb(64, 64, 64);
+            chartArea2.BackColor = Color.White;
+            chartArea2.BorderColor = Color.Bisque;
             chartArea2.BorderWidth = 4;
             chartArea2.Name = "ChartArea1";
             chtCost.ChartAreas.Add(chartArea2);
-            chtCost.Location = new Point(536, 137);
-            chtCost.Margin = new Padding(3, 2, 3, 2);
+            chtCost.Location = new Point(613, 183);
             chtCost.Name = "chtCost";
-            chtCost.Size = new Size(367, 395);
+            chtCost.Size = new Size(419, 527);
             chtCost.TabIndex = 15;
             chtCost.Text = "chart2";
+            title2.ForeColor = Color.White;
             title2.Name = "Title1";
             title2.Text = "Gross income vs Costs";
             chtCost.Titles.Add(title2);
@@ -147,14 +151,16 @@
             // 
             // chtTotal
             // 
+            chtTotal.BackColor = Color.FromArgb(64, 64, 64);
+            chartArea3.BackColor = Color.FromArgb(64, 64, 64);
             chartArea3.Name = "ChartArea1";
             chtTotal.ChartAreas.Add(chartArea3);
-            chtTotal.Location = new Point(909, 137);
-            chtTotal.Margin = new Padding(3, 2, 3, 2);
+            chtTotal.Location = new Point(1039, 183);
             chtTotal.Name = "chtTotal";
-            chtTotal.Size = new Size(384, 395);
+            chtTotal.Size = new Size(439, 527);
             chtTotal.TabIndex = 16;
             chtTotal.Text = "chart3";
+            title3.ForeColor = Color.White;
             title3.Name = "Title1";
             title3.Text = "Total cost per store";
             chtTotal.Titles.Add(title3);
@@ -164,10 +170,9 @@
             // 
             btnLogout.BackColor = SystemColors.ControlText;
             btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnLogout.Location = new Point(19, 319);
-            btnLogout.Margin = new Padding(3, 2, 3, 2);
+            btnLogout.Location = new Point(22, 425);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(66, 46);
+            btnLogout.Size = new Size(75, 61);
             btnLogout.TabIndex = 25;
             btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
@@ -176,10 +181,9 @@
             // 
             btnSetting.BackColor = SystemColors.ControlText;
             btnSetting.Image = Properties.Resources.settings_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnSetting.Location = new Point(19, 256);
-            btnSetting.Margin = new Padding(3, 2, 3, 2);
+            btnSetting.Location = new Point(22, 341);
             btnSetting.Name = "btnSetting";
-            btnSetting.Size = new Size(66, 51);
+            btnSetting.Size = new Size(75, 68);
             btnSetting.TabIndex = 24;
             btnSetting.UseVisualStyleBackColor = false;
             btnSetting.Click += btnSetting_Click;
@@ -187,12 +191,12 @@
             // btnHelp
             // 
             btnHelp.BackColor = SystemColors.ControlText;
+            btnHelp.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnHelp.Image = Properties.Resources.info_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnHelp.ImageAlign = ContentAlignment.MiddleRight;
-            btnHelp.Location = new Point(-1, 188);
-            btnHelp.Margin = new Padding(3, 2, 3, 2);
+            btnHelp.Location = new Point(-1, 251);
             btnHelp.Name = "btnHelp";
-            btnHelp.Size = new Size(104, 64);
+            btnHelp.Size = new Size(119, 85);
             btnHelp.TabIndex = 23;
             btnHelp.Text = "Help";
             btnHelp.TextAlign = ContentAlignment.MiddleLeft;
@@ -202,12 +206,12 @@
             // btnUser
             // 
             btnUser.BackColor = SystemColors.ControlText;
+            btnUser.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnUser.Image = Properties.Resources.badge_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnUser.ImageAlign = ContentAlignment.MiddleRight;
-            btnUser.Location = new Point(-1, 127);
-            btnUser.Margin = new Padding(3, 2, 3, 2);
+            btnUser.Location = new Point(-1, 169);
             btnUser.Name = "btnUser";
-            btnUser.Size = new Size(104, 64);
+            btnUser.Size = new Size(119, 85);
             btnUser.TabIndex = 22;
             btnUser.Text = "User";
             btnUser.TextAlign = ContentAlignment.MiddleLeft;
@@ -217,12 +221,12 @@
             // btnInput
             // 
             btnInput.BackColor = SystemColors.ControlText;
+            btnInput.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnInput.Image = Properties.Resources.upload_file_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnInput.ImageAlign = ContentAlignment.MiddleRight;
-            btnInput.Location = new Point(-1, 65);
-            btnInput.Margin = new Padding(3, 2, 3, 2);
+            btnInput.Location = new Point(-1, 87);
             btnInput.Name = "btnInput";
-            btnInput.Size = new Size(104, 64);
+            btnInput.Size = new Size(119, 85);
             btnInput.TabIndex = 21;
             btnInput.Text = "Input";
             btnInput.TextAlign = ContentAlignment.MiddleLeft;
@@ -232,12 +236,12 @@
             // btnDetails
             // 
             btnDetails.BackColor = SystemColors.ControlText;
+            btnDetails.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnDetails.Image = Properties.Resources.trending_up_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnDetails.ImageAlign = ContentAlignment.MiddleRight;
-            btnDetails.Location = new Point(-1, 4);
-            btnDetails.Margin = new Padding(3, 2, 3, 2);
+            btnDetails.Location = new Point(-1, 5);
             btnDetails.Name = "btnDetails";
-            btnDetails.Size = new Size(104, 64);
+            btnDetails.Size = new Size(119, 85);
             btnDetails.TabIndex = 20;
             btnDetails.Text = "Details";
             btnDetails.TextAlign = ContentAlignment.MiddleLeft;
@@ -247,10 +251,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(364, 99);
+            label3.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(405, 126);
             label3.Name = "label3";
-            label3.Size = new Size(144, 32);
+            label3.Size = new Size(201, 46);
             label3.TabIndex = 26;
             label3.Text = "Net income:";
             // 
@@ -258,9 +262,9 @@
             // 
             lblNet.AutoSize = true;
             lblNet.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNet.Location = new Point(516, 99);
+            lblNet.Location = new Point(601, 131);
             lblNet.Name = "lblNet";
-            lblNet.Size = new Size(139, 32);
+            lblNet.Size = new Size(172, 41);
             lblNet.TabIndex = 27;
             lblNet.Text = "Net income";
             // 
@@ -268,19 +272,20 @@
             // 
             btnReload.BackColor = SystemColors.ControlText;
             btnReload.Image = Properties.Resources.refresh_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnReload.Location = new Point(278, 40);
+            btnReload.Location = new Point(318, 53);
+            btnReload.Margin = new Padding(3, 4, 3, 4);
             btnReload.Name = "btnReload";
-            btnReload.Size = new Size(58, 49);
+            btnReload.Size = new Size(66, 65);
             btnReload.TabIndex = 28;
             btnReload.UseVisualStyleBackColor = false;
             btnReload.Click += btnReload_Click;
             // 
             // View
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlText;
-            ClientSize = new Size(1317, 632);
+            ClientSize = new Size(1505, 843);
             Controls.Add(btnReload);
             Controls.Add(lblNet);
             Controls.Add(label3);
@@ -299,7 +304,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.Window;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "View";
             Text = "Details";
             Load += View_Load;

@@ -1,0 +1,4 @@
+08/2024,Fast food,50.9,Food
+08/2024,Fuel,95,Bills 
+08/2024,Grocery,100,Food
+08/2024,Netflix,12.5,Entertainment

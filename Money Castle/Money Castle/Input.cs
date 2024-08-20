@@ -67,25 +67,25 @@ namespace Money_Castle
             string debtTime = dtpDebtTime.Text;
             bool worked = false;
             // puts each varible in a collection of varible sorted by what info goes in what file 
-            string userDetils = income + "," + period + "," + savingDes + "," + savingAmount + "," + percent + "," + debtDes + "," + debtAmount + "," + debtPaid+","+debtPay+","+debtTime;
+            string userDetils = income + "," + period + "," + savingDes + "," + savingAmount + "," + percent + "," + debtDes + "," + debtAmount + "," + debtPaid + "," + debtPay + "," + debtTime;
             /* In my design instead of the usering input this costs, i would of maded my user to 
              * input the file location of a bank statment which is impossible with my level of skill and knowledge
              * so instead of this i have the user input it themselves
             */
             string costs = date + "," + store + "," + cost + "," + type;
             // checks if any of the inputs are empty
-            if (income == "" |   savingAmount == "" | savingDes == "" | debtAmount == "" | debtDes == "" | debtPaid == "" | debtPay == "")
+            if (income == "" | savingAmount == "" | savingDes == "" | debtAmount == "" | debtDes == "" | debtPaid == "" | debtPay == "")
             {
                 MessageBox.Show("Please fill all boxes");
             }
 
             // checks if some of the inputs are only numbers 
-            else if (!float.TryParse(income, out float test) | !float.TryParse(savingAmount, out float test2) | !float.TryParse(debtAmount, out float test3) | !float.TryParse(debtPaid, out float test4)| !float.TryParse(debtPay, out float test5))
+            else if (!float.TryParse(income, out float test) | !float.TryParse(savingAmount, out float test2) | !float.TryParse(debtAmount, out float test3) | !float.TryParse(debtPaid, out float test4) | !float.TryParse(debtPay, out float test5))
 
             {
                 MessageBox.Show("please only use numbers for income/cost/savings/debts");
             }
-            else if (int.Parse(debtPay) <= 0) 
+            else if (int.Parse(debtPay) <= 0)
             {
                 MessageBox.Show("Monthly payments need to be above $0");
             }
@@ -126,7 +126,7 @@ namespace Money_Castle
                     string[] lines = File.ReadAllLines(Login.UserDetailPath);
                     lines[0] = userDetils;
                     File.WriteAllLines(Login.UserDetailPath, lines);
-                    worked = true ;
+                    worked = true;
                 }
                 // sorts the array then remakes it
                 string[] Allcosts = File.ReadAllLines(Login.CostsPath);
@@ -138,7 +138,7 @@ namespace Money_Castle
                     MessageBox.Show("File updated");
 
                 }
-                else 
+                else
                 {   // if non of the data trnasfers worked it will diplay a error message
                     MessageBox.Show("Something went wrong");
                 }

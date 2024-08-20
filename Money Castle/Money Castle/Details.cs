@@ -93,17 +93,17 @@ namespace Money_Castle
             graph.Series.Add(series);
             // sets the min y value to the lowest number in the array
             graph.ChartAreas[0].AxisY.Minimum = min;
-           
+
             // binds the series data points to the input x and y values inputed 
             series.Points.DataBindXY(x, y);
-         
+
 
             Legend legend = new Legend("MainLegend")
             { // creates and positions a custom legend to make the graphs less confusing  
-                Docking = Docking.Top, 
-                Alignment = StringAlignment.Center, 
-                LegendStyle = LegendStyle.Row, 
-                IsDockedInsideChartArea = false 
+                Docking = Docking.Top,
+                Alignment = StringAlignment.Center,
+                LegendStyle = LegendStyle.Row,
+                IsDockedInsideChartArea = false
             };
             try
             {// tests it 
@@ -126,7 +126,7 @@ namespace Money_Castle
             public string Store { get; set; }
 
             public float TotalCost { get; set; }
-            
+
         }
         public void reload()
         { // creates a reload funtion to make it easy to recall 
@@ -150,7 +150,7 @@ namespace Money_Castle
                     case "Weekly":
                         // when found it will calculate total income, monthly income after tax, display tax using the tax funtionn and display net income
                         total = income * 55;
-                        monthly = Math.Round(total - tax(total))/ 12;
+                        monthly = Math.Round(total - tax(total)) / 12;
                         lblTax.Text = Math.Round(tax(total)).ToString();
                         lblNet.Text = Math.Round(total - tax(total)).ToString();
                         break;
@@ -227,7 +227,7 @@ namespace Money_Castle
 
                             storeTotals.Add(new StoreTotal { Store = storeName, TotalCost = cost });
                         }
-                        else 
+                        else
                         {   // Adds cost to an existing entry
                             storeTotal.TotalCost += cost;
                         }
@@ -241,7 +241,7 @@ namespace Money_Castle
                         grossTotal.Add(Math.Round(monthly - monthlyTotal.TotalCost));
                         // Add all info from lists to another list
                     }
-                    foreach (var storeTotal in storeTotals) 
+                    foreach (var storeTotal in storeTotals)
                     {
                         Store.Add(storeTotal.Store);
                         storeCosts.Add(storeTotal.TotalCost);
@@ -262,12 +262,12 @@ namespace Money_Castle
                     double min = 0;
                     if (costs.Min() > gross.Min())
                     {   // finds the array with the lowest number so the y min can be set
-                        min = Math.Round(gross.Min(),000);
+                        min = Math.Round(gross.Min(), 000);
 
                     }
                     else if (costs.Min() < gross.Min())
                     {
-                        min = Math.Round(costs.Min(),000);
+                        min = Math.Round(costs.Min(), 000);
 
                     }
                     // converts all the lists to an array  Math.Round(gross.Min())
@@ -275,9 +275,9 @@ namespace Money_Castle
                     Graph("net", months, gross, chtCost, Color.Green, SeriesChartType.Line, min, Math.Round(costs.Max()));
 
                     // Defines an array of 12 values of monthly pay to be graphed
-                    Graph("Income", months, y, chtCost, Color.LightBlue, SeriesChartType.Line, Math.Round(costs.Min()), Math.Round(costs.Max()));
+                    Graph("Income", months, y, chtCost, Color.DarkGoldenrod, SeriesChartType.Line, Math.Round(costs.Min()), Math.Round(costs.Max()));
                     // calls my graph funtion to create the series on the graph, and define their type.
-                    Graph("Stores", stores, storecost, chtTotal, Color.Brown, SeriesChartType.Pie, storecost.Min(), storecost.Max());
+                    Graph("Stores", stores, storecost, chtTotal, Color.White, SeriesChartType.Pie, storecost.Min(), storecost.Max());
 
                 }
             }
@@ -335,7 +335,7 @@ namespace Money_Castle
                             double[] debt = yearlydebt.ToArray();
                             string[] time = years.ToArray();
 
-                           
+
                             // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
                             Graph("Debt", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal);
 
@@ -347,7 +347,7 @@ namespace Money_Castle
 
                             double[] debt = debts.ToArray();
                             string[] time = months.ToArray();
-                          
+
                             // once lists are coverted to arrays it will display on the chtDebt graph using the graph funtion
 
                             Graph("Debt", time, debt, chtDebt, Color.Blue, SeriesChartType.Line, 0, debttotal);
@@ -362,12 +362,12 @@ namespace Money_Castle
             }
         }
 
-       
+
 
         private void View_Load(object sender, EventArgs e)
         {// runs the reload funtion on load
             reload();
-          
+
 
 
 
