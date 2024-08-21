@@ -29,70 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Raw_data));
-            lblDebtotal = new Label();
-            lblDebtPaid = new Label();
-            lblDebt = new Label();
-            lblPaid = new Label();
             lsvOutput = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            btnLogout = new Button();
-            btnSetting = new Button();
-            btnHelp = new Button();
-            btnUser = new Button();
-            btnInput = new Button();
-            btnDetails = new Button();
             cmbSort = new ComboBox();
             btnGraph = new Button();
             label3 = new Label();
             btnDelete = new Button();
+            cmbType = new ComboBox();
+            txtCost = new TextBox();
+            txtStore = new TextBox();
+            dtpDate = new DateTimePicker();
+            label2 = new Label();
+            btnAdd = new Button();
+            label1 = new Label();
             SuspendLayout();
-            // 
-            // lblDebtotal
-            // 
-            lblDebtotal.AutoSize = true;
-            lblDebtotal.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDebtotal.Location = new Point(262, 11);
-            lblDebtotal.Name = "lblDebtotal";
-            lblDebtotal.Size = new Size(69, 31);
-            lblDebtotal.TabIndex = 0;
-            lblDebtotal.Text = "Debt:";
-            // 
-            // lblDebtPaid
-            // 
-            lblDebtPaid.AutoSize = true;
-            lblDebtPaid.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDebtPaid.Location = new Point(177, 52);
-            lblDebtPaid.Name = "lblDebtPaid";
-            lblDebtPaid.Size = new Size(154, 31);
-            lblDebtPaid.TabIndex = 1;
-            lblDebtPaid.Text = "Debt paid off:";
-            // 
-            // lblDebt
-            // 
-            lblDebt.AutoSize = true;
-            lblDebt.Location = new Point(336, 17);
-            lblDebt.Name = "lblDebt";
-            lblDebt.Size = new Size(40, 20);
-            lblDebt.TabIndex = 2;
-            lblDebt.Text = "debt";
-            // 
-            // lblPaid
-            // 
-            lblPaid.AutoSize = true;
-            lblPaid.Location = new Point(336, 63);
-            lblPaid.Name = "lblPaid";
-            lblPaid.Size = new Size(40, 20);
-            lblPaid.TabIndex = 3;
-            lblPaid.Text = "debt";
             // 
             // lsvOutput
             // 
             lsvOutput.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             lsvOutput.ForeColor = SystemColors.MenuText;
-            lsvOutput.Location = new Point(159, 123);
+            lsvOutput.Location = new Point(124, 64);
             lsvOutput.Name = "lsvOutput";
             lsvOutput.Size = new Size(546, 175);
             lsvOutput.TabIndex = 4;
@@ -120,89 +79,11 @@
             columnHeader4.Text = "Type";
             columnHeader4.Width = 100;
             // 
-            // btnLogout
-            // 
-            btnLogout.BackColor = SystemColors.ControlText;
-            btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnLogout.Location = new Point(21, 419);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(75, 61);
-            btnLogout.TabIndex = 19;
-            btnLogout.UseVisualStyleBackColor = false;
-            btnLogout.Click += btnLogout_Click;
-            // 
-            // btnSetting
-            // 
-            btnSetting.BackColor = SystemColors.ControlText;
-            btnSetting.Image = Properties.Resources.settings_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnSetting.Location = new Point(21, 336);
-            btnSetting.Name = "btnSetting";
-            btnSetting.Size = new Size(75, 68);
-            btnSetting.TabIndex = 18;
-            btnSetting.UseVisualStyleBackColor = false;
-            btnSetting.Click += btnSetting_Click;
-            // 
-            // btnHelp
-            // 
-            btnHelp.BackColor = SystemColors.ControlText;
-            btnHelp.Image = Properties.Resources.info_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnHelp.ImageAlign = ContentAlignment.MiddleRight;
-            btnHelp.Location = new Point(-2, 244);
-            btnHelp.Name = "btnHelp";
-            btnHelp.Size = new Size(119, 85);
-            btnHelp.TabIndex = 17;
-            btnHelp.Text = "Help";
-            btnHelp.TextAlign = ContentAlignment.MiddleLeft;
-            btnHelp.UseVisualStyleBackColor = false;
-            btnHelp.Click += btnHelp_Click;
-            // 
-            // btnUser
-            // 
-            btnUser.BackColor = SystemColors.ControlText;
-            btnUser.Image = Properties.Resources.badge_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnUser.ImageAlign = ContentAlignment.MiddleRight;
-            btnUser.Location = new Point(-2, 163);
-            btnUser.Name = "btnUser";
-            btnUser.Size = new Size(119, 85);
-            btnUser.TabIndex = 16;
-            btnUser.Text = "User";
-            btnUser.TextAlign = ContentAlignment.MiddleLeft;
-            btnUser.UseVisualStyleBackColor = false;
-            btnUser.Click += btnUser_Click;
-            // 
-            // btnInput
-            // 
-            btnInput.BackColor = SystemColors.ControlText;
-            btnInput.Image = Properties.Resources.upload_file_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnInput.ImageAlign = ContentAlignment.MiddleRight;
-            btnInput.Location = new Point(-2, 81);
-            btnInput.Name = "btnInput";
-            btnInput.Size = new Size(119, 85);
-            btnInput.TabIndex = 15;
-            btnInput.Text = "Input";
-            btnInput.TextAlign = ContentAlignment.MiddleLeft;
-            btnInput.UseVisualStyleBackColor = false;
-            btnInput.Click += btnInput_Click;
-            // 
-            // btnDetails
-            // 
-            btnDetails.BackColor = SystemColors.ControlText;
-            btnDetails.Image = Properties.Resources.trending_up_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnDetails.ImageAlign = ContentAlignment.MiddleRight;
-            btnDetails.Location = new Point(-2, -1);
-            btnDetails.Name = "btnDetails";
-            btnDetails.Size = new Size(119, 85);
-            btnDetails.TabIndex = 14;
-            btnDetails.Text = "Details";
-            btnDetails.TextAlign = ContentAlignment.MiddleLeft;
-            btnDetails.UseVisualStyleBackColor = false;
-            btnDetails.Click += btnDetails_Click;
-            // 
             // cmbSort
             // 
             cmbSort.FormattingEnabled = true;
             cmbSort.Items.AddRange(new object[] { "Type", "Date", "Store" });
-            cmbSort.Location = new Point(381, 345);
+            cmbSort.Location = new Point(308, 255);
             cmbSort.Name = "cmbSort";
             cmbSort.Size = new Size(151, 28);
             cmbSort.TabIndex = 21;
@@ -212,13 +93,13 @@
             // 
             btnGraph.BackColor = SystemColors.InactiveCaptionText;
             btnGraph.ForeColor = SystemColors.ButtonHighlight;
-            btnGraph.Image = Properties.Resources.signal_cellular_alt_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            btnGraph.Image = Properties.Resources.keyboard_backspace_20dp_FILL0_wght300_GRAD0_opsz20;
             btnGraph.ImageAlign = ContentAlignment.MiddleRight;
-            btnGraph.Location = new Point(275, 381);
+            btnGraph.Location = new Point(190, 440);
             btnGraph.Name = "btnGraph";
-            btnGraph.Size = new Size(152, 75);
+            btnGraph.Size = new Size(106, 75);
             btnGraph.TabIndex = 22;
-            btnGraph.Text = "View Graphs";
+            btnGraph.Text = "Back";
             btnGraph.TextAlign = ContentAlignment.MiddleLeft;
             btnGraph.UseVisualStyleBackColor = false;
             btnGraph.Click += btnGraph_Click;
@@ -227,7 +108,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(306, 344);
+            label3.Location = new Point(227, 258);
             label3.Name = "label3";
             label3.Size = new Size(75, 25);
             label3.TabIndex = 23;
@@ -239,7 +120,7 @@
             btnDelete.ForeColor = SystemColors.ButtonHighlight;
             btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
             btnDelete.ImageAlign = ContentAlignment.MiddleRight;
-            btnDelete.Location = new Point(458, 381);
+            btnDelete.Location = new Point(466, 440);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(152, 75);
             btnDelete.TabIndex = 24;
@@ -248,55 +129,119 @@
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
+            // cmbType
+            // 
+            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbType.FormattingEnabled = true;
+            cmbType.Items.AddRange(new object[] { "Food", "Bills ", "Entertainment", "Other" });
+            cmbType.Location = new Point(308, 390);
+            cmbType.Name = "cmbType";
+            cmbType.Size = new Size(111, 28);
+            cmbType.TabIndex = 54;
+            // 
+            // txtCost
+            // 
+            txtCost.Location = new Point(308, 357);
+            txtCost.Name = "txtCost";
+            txtCost.PlaceholderText = "Cost";
+            txtCost.Size = new Size(125, 27);
+            txtCost.TabIndex = 53;
+            // 
+            // txtStore
+            // 
+            txtStore.Location = new Point(308, 324);
+            txtStore.Name = "txtStore";
+            txtStore.PlaceholderText = "Store";
+            txtStore.Size = new Size(125, 27);
+            txtStore.TabIndex = 52;
+            // 
+            // dtpDate
+            // 
+            dtpDate.CustomFormat = "MM/yyyy";
+            dtpDate.ImeMode = ImeMode.Off;
+            dtpDate.Location = new Point(308, 294);
+            dtpDate.Name = "dtpDate";
+            dtpDate.Size = new Size(250, 27);
+            dtpDate.TabIndex = 51;
+            dtpDate.Value = new DateTime(2024, 7, 19, 12, 38, 34, 0);
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(190, 293);
+            label2.Name = "label2";
+            label2.Size = new Size(112, 28);
+            label2.TabIndex = 50;
+            label2.Text = "Add a Cost:";
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = SystemColors.InactiveCaptionText;
+            btnAdd.ForeColor = SystemColors.ButtonHighlight;
+            btnAdd.Image = Properties.Resources.add_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            btnAdd.ImageAlign = ContentAlignment.MiddleRight;
+            btnAdd.Location = new Point(308, 440);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(152, 75);
+            btnAdd.TabIndex = 55;
+            btnAdd.Text = "Add Cost ";
+            btnAdd.TextAlign = ContentAlignment.MiddleLeft;
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += button1_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(227, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(292, 38);
+            label1.TabIndex = 56;
+            label1.Text = "Add or Remove a Cost";
+            // 
             // Raw_data
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.WindowText;
-            ClientSize = new Size(800, 501);
+            ClientSize = new Size(800, 530);
+            Controls.Add(label1);
+            Controls.Add(btnAdd);
+            Controls.Add(cmbType);
+            Controls.Add(txtCost);
+            Controls.Add(txtStore);
+            Controls.Add(dtpDate);
+            Controls.Add(label2);
             Controls.Add(btnDelete);
             Controls.Add(label3);
             Controls.Add(btnGraph);
             Controls.Add(cmbSort);
-            Controls.Add(btnLogout);
-            Controls.Add(btnSetting);
-            Controls.Add(btnHelp);
-            Controls.Add(btnUser);
-            Controls.Add(btnInput);
-            Controls.Add(btnDetails);
             Controls.Add(lsvOutput);
-            Controls.Add(lblPaid);
-            Controls.Add(lblDebt);
-            Controls.Add(lblDebtPaid);
-            Controls.Add(lblDebtotal);
             ForeColor = SystemColors.ControlLightLight;
             Name = "Raw_data";
-            Text = "Raw data";
+            Text = "Costs";
             Load += Raw_data_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label lblDebtotal;
-        private Label lblDebtPaid;
-        private Label lblDebt;
-        private Label lblPaid;
         private ListView lsvOutput;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
-        private Button btnLogout;
-        private Button btnSetting;
-        private Button btnHelp;
-        private Button btnUser;
-        private Button btnInput;
-        private Button btnDetails;
         private ComboBox cmbSort;
         private Button btnGraph;
         private Label label3;
         private Button btnDelete;
+        private ComboBox cmbType;
+        private TextBox txtCost;
+        private TextBox txtStore;
+        private DateTimePicker dtpDate;
+        private Label label2;
+        private Button btnAdd;
+        private Label label1;
     }
 }

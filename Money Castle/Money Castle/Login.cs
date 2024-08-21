@@ -29,7 +29,7 @@ namespace Money_Castle
         public static View view;
         public static Input input = new Input();
         public static Login login = new Login();
-        public static Raw_data raw_Data = new Raw_data();
+        public static Raw_data raw_Data= new Raw_data();
         public static Settings settings = new Settings();
         public static User use = new User();
         public static Help help = new Help();

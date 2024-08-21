@@ -23,23 +23,12 @@ namespace Money_Castle
 
         private void btnGraph_Click(object sender, EventArgs e)
         {
-            Login.open(Login.view, Login.raw_Data);
+            this.Close();
         }
 
-        private void Raw_data_Load(object sender, EventArgs e)
+        private void reload()
         {
-            if (File.Exists(Login.UserDetailPath))
-            {// if the file exists it will populate the lables with the debt data from it
-                string[] line = File.ReadAllLines(Login.UserDetailPath);
-                string[] lines = line[0].Split(',');
-
-                lblDebt.Text = lines[6];
-                lblPaid.Text = (lines[7]);
-
-
-
-            }
-
+            lsvOutput.Items.Clear();
             if (File.Exists(Login.CostsPath))
             {
                 // if the file exists it will populate the list view box
@@ -65,6 +54,15 @@ namespace Money_Castle
 
 
             }
+
+        }
+
+        private void Raw_data_Load(object sender, EventArgs e)
+        {
+            reload();
+            dtpDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
+
+
         }
 
         private void cmbSort_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,7 +114,7 @@ namespace Money_Castle
                 string delete = (lsvOutput.SelectedItems[0]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[1]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[2]).Text + "," + (lsvOutput.SelectedItems[0].SubItems[3]).Text;
                 // reads all items in the selected entry and adds it to a delete varible to reduce mutiple entrys from being deleted for having the same date or store
                 string tempFile = Path.GetTempFileName();//creats a temp file path
-                                                      //MessageBox.Show(delele); error testing
+                                                         //MessageBox.Show(delele); error testing
                 var linesToKeep = File.ReadLines(Login.CostsPath).Where(l => l != delete);
                 //if the line read doesn't match delete it is kept
 
@@ -128,6 +126,7 @@ namespace Money_Castle
                 //creates a new file with all the saved lines transfered from the temp file
                 lsvOutput.SelectedItems[0].Remove();
                 // removes the entry from the list view box
+                reload();
 
 
             }
@@ -174,6 +173,40 @@ namespace Money_Castle
         {
             Login.open(Login.settings, Login.raw_Data);
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string date = dtpDate.Text;
+            string store = txtStore.Text;
+            string cost = txtCost.Text;
+            string type = cmbType.Text;
+            string costs = date + "," + store + "," + cost + "," + type;
+            if (File.Exists(Login.CostsPath))
+            {
+                if (cost != "" && store != "" && type != "")
+                {
+
+                    if (float.TryParse(cost, out float test10))
+                    {   // if cost is a number it will save the record to the file
+                        using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
+                        {
+                            tw.WriteLine(costs);
+                            tw.Close();
+                            MessageBox.Show("Cost added to file.");
+                            reload();
+                            txtCost.Text = "";
+                            txtStore.Text = "";
+                            cmbType.Text = "";
+                        }
+                    }
+                    else { MessageBox.Show("please use numbers for cost"); }
+                }
+                else
+                {
+                    MessageBox.Show("Please fill out all cost inputs to add a cost");
+                }
+            }
         }
     }
 }

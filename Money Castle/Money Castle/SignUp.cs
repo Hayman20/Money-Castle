@@ -63,7 +63,7 @@ namespace Money_Castle
             }
             if (exists==true) 
             {// if exists is true it will throw an error message that the username is already in use
-                MessageBox.Show("same");
+                MessageBox.Show("Sorry, this username is already in use.");
 
             }
             else if (user == "" | pass == "" | con == "")
@@ -80,11 +80,11 @@ namespace Money_Castle
                 using (TextWriter tw = new StreamWriter(Login.temppath, true))
                 {// creates a record out of the inputed data to be saved into the users text file
                     tw.WriteLine(record);
-                    MessageBox.Show("Added to file");
+                    MessageBox.Show("User Created");
                     tw.Close();
                     Login.EncryptFile(Login.temppath,path);
                     File.Delete(Login.temppath);
-
+                    this.Close();
 
                 }
 

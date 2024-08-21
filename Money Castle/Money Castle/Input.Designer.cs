@@ -28,17 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnLogout = new Button();
             btnSetting = new Button();
             btnHelp = new Button();
             btnUser = new Button();
             btnInput = new Button();
             btnDetails = new Button();
             label1 = new Label();
-            label2 = new Label();
-            dtpDate = new DateTimePicker();
-            txtStore = new TextBox();
-            txtCost = new TextBox();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -51,29 +46,19 @@
             txtDebtPaid = new TextBox();
             btnUpdate = new Button();
             cmbPeriod = new ComboBox();
-            cmbType = new ComboBox();
             txtMonthly = new TextBox();
             dtpDebtTime = new DateTimePicker();
             label6 = new Label();
             label7 = new Label();
+            btnCosts = new Button();
+            button1 = new Button();
             SuspendLayout();
-            // 
-            // btnLogout
-            // 
-            btnLogout.BackColor = SystemColors.ControlText;
-            btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnLogout.Location = new Point(19, 420);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(75, 61);
-            btnLogout.TabIndex = 31;
-            btnLogout.UseVisualStyleBackColor = false;
-            btnLogout.Click += btnLogout_Click;
             // 
             // btnSetting
             // 
             btnSetting.BackColor = SystemColors.ControlText;
             btnSetting.Image = Properties.Resources.settings_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnSetting.Location = new Point(19, 337);
+            btnSetting.Location = new Point(12, 412);
             btnSetting.Name = "btnSetting";
             btnSetting.Size = new Size(75, 68);
             btnSetting.TabIndex = 30;
@@ -145,47 +130,11 @@
             label1.TabIndex = 32;
             label1.Text = "Income:";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(167, 153);
-            label2.Name = "label2";
-            label2.Size = new Size(112, 28);
-            label2.TabIndex = 33;
-            label2.Text = "Add a Cost:";
-            // 
-            // dtpDate
-            // 
-            dtpDate.CustomFormat = "MM/yyyy";
-            dtpDate.ImeMode = ImeMode.Off;
-            dtpDate.Location = new Point(285, 154);
-            dtpDate.Name = "dtpDate";
-            dtpDate.Size = new Size(250, 27);
-            dtpDate.TabIndex = 34;
-            dtpDate.Value = new DateTime(2024, 7, 19, 12, 38, 34, 0);
-            // 
-            // txtStore
-            // 
-            txtStore.Location = new Point(541, 154);
-            txtStore.Name = "txtStore";
-            txtStore.PlaceholderText = "Store";
-            txtStore.Size = new Size(125, 27);
-            txtStore.TabIndex = 35;
-            // 
-            // txtCost
-            // 
-            txtCost.Location = new Point(672, 154);
-            txtCost.Name = "txtCost";
-            txtCost.PlaceholderText = "Cost";
-            txtCost.Size = new Size(125, 27);
-            txtCost.TabIndex = 36;
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(158, 225);
+            label3.Location = new Point(158, 138);
             label3.Name = "label3";
             label3.Size = new Size(121, 28);
             label3.TabIndex = 37;
@@ -195,7 +144,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(219, 332);
+            label4.Location = new Point(219, 245);
             label4.Name = "label4";
             label4.Size = new Size(59, 28);
             label4.TabIndex = 38;
@@ -205,7 +154,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(158, 282);
+            label5.Location = new Point(158, 195);
             label5.Name = "label5";
             label5.Size = new Size(262, 28);
             label5.TabIndex = 39;
@@ -221,7 +170,7 @@
             // 
             // txtSavingdes
             // 
-            txtSavingdes.Location = new Point(285, 229);
+            txtSavingdes.Location = new Point(285, 142);
             txtSavingdes.Name = "txtSavingdes";
             txtSavingdes.PlaceholderText = "Description";
             txtSavingdes.Size = new Size(125, 27);
@@ -229,7 +178,7 @@
             // 
             // txtSavingAmont
             // 
-            txtSavingAmont.Location = new Point(416, 229);
+            txtSavingAmont.Location = new Point(416, 142);
             txtSavingAmont.Name = "txtSavingAmont";
             txtSavingAmont.PlaceholderText = "Amount";
             txtSavingAmont.Size = new Size(125, 27);
@@ -240,14 +189,14 @@
             cmbPercent.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPercent.FormattingEnabled = true;
             cmbPercent.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100" });
-            cmbPercent.Location = new Point(416, 282);
+            cmbPercent.Location = new Point(416, 195);
             cmbPercent.Name = "cmbPercent";
             cmbPercent.Size = new Size(151, 28);
             cmbPercent.TabIndex = 43;
             // 
             // txtDebtDes
             // 
-            txtDebtDes.Location = new Point(275, 336);
+            txtDebtDes.Location = new Point(275, 249);
             txtDebtDes.Name = "txtDebtDes";
             txtDebtDes.PlaceholderText = "Description";
             txtDebtDes.Size = new Size(103, 27);
@@ -255,7 +204,7 @@
             // 
             // txtDebtAmount
             // 
-            txtDebtAmount.Location = new Point(384, 336);
+            txtDebtAmount.Location = new Point(384, 249);
             txtDebtAmount.Name = "txtDebtAmount";
             txtDebtAmount.PlaceholderText = "Amount";
             txtDebtAmount.Size = new Size(89, 27);
@@ -263,7 +212,7 @@
             // 
             // txtDebtPaid
             // 
-            txtDebtPaid.Location = new Point(479, 336);
+            txtDebtPaid.Location = new Point(479, 249);
             txtDebtPaid.Name = "txtDebtPaid";
             txtDebtPaid.PlaceholderText = "Amount Paid off";
             txtDebtPaid.Size = new Size(121, 27);
@@ -276,7 +225,7 @@
             btnUpdate.ForeColor = SystemColors.ControlLightLight;
             btnUpdate.Image = Properties.Resources.upgrade_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
             btnUpdate.ImageAlign = ContentAlignment.MiddleRight;
-            btnUpdate.Location = new Point(433, 391);
+            btnUpdate.Location = new Point(284, 366);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(167, 56);
             btnUpdate.TabIndex = 47;
@@ -295,19 +244,9 @@
             cmbPeriod.Size = new Size(151, 28);
             cmbPeriod.TabIndex = 48;
             // 
-            // cmbType
-            // 
-            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbType.FormattingEnabled = true;
-            cmbType.Items.AddRange(new object[] { "Food", "Bills ", "Entertainment", "Other" });
-            cmbType.Location = new Point(803, 153);
-            cmbType.Name = "cmbType";
-            cmbType.Size = new Size(111, 28);
-            cmbType.TabIndex = 49;
-            // 
             // txtMonthly
             // 
-            txtMonthly.Location = new Point(606, 336);
+            txtMonthly.Location = new Point(606, 249);
             txtMonthly.Name = "txtMonthly";
             txtMonthly.PlaceholderText = "Monthly Payment";
             txtMonthly.Size = new Size(121, 27);
@@ -316,7 +255,7 @@
             // dtpDebtTime
             // 
             dtpDebtTime.CustomFormat = "MM/yyyy";
-            dtpDebtTime.Location = new Point(734, 336);
+            dtpDebtTime.Location = new Point(734, 249);
             dtpDebtTime.Margin = new Padding(3, 4, 3, 4);
             dtpDebtTime.Name = "dtpDebtTime";
             dtpDebtTime.Size = new Size(228, 27);
@@ -325,7 +264,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(734, 306);
+            label6.Location = new Point(734, 219);
             label6.Name = "label6";
             label6.Size = new Size(112, 20);
             label6.TabIndex = 52;
@@ -341,17 +280,48 @@
             label7.TabIndex = 53;
             label7.Text = "User data input:";
             // 
+            // btnCosts
+            // 
+            btnCosts.BackColor = SystemColors.ActiveCaptionText;
+            btnCosts.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCosts.ForeColor = SystemColors.ControlLightLight;
+            btnCosts.Image = Properties.Resources.attach_money_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            btnCosts.ImageAlign = ContentAlignment.MiddleRight;
+            btnCosts.Location = new Point(606, 366);
+            btnCosts.Name = "btnCosts";
+            btnCosts.Size = new Size(164, 64);
+            btnCosts.TabIndex = 54;
+            btnCosts.Text = "Input Costs";
+            btnCosts.TextAlign = ContentAlignment.MiddleLeft;
+            btnCosts.UseVisualStyleBackColor = false;
+            btnCosts.Click += btnCosts_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ControlText;
+            button1.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(-3, 322);
+            button1.Name = "button1";
+            button1.Size = new Size(117, 84);
+            button1.TabIndex = 55;
+            button1.Text = "Logout";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Input
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(998, 492);
+            Controls.Add(button1);
+            Controls.Add(btnCosts);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(dtpDebtTime);
             Controls.Add(txtMonthly);
-            Controls.Add(cmbType);
             Controls.Add(cmbPeriod);
             Controls.Add(btnUpdate);
             Controls.Add(txtDebtPaid);
@@ -364,12 +334,7 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(txtCost);
-            Controls.Add(txtStore);
-            Controls.Add(dtpDate);
-            Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnLogout);
             Controls.Add(btnSetting);
             Controls.Add(btnHelp);
             Controls.Add(btnUser);
@@ -384,18 +349,12 @@
         }
 
         #endregion
-
-        private Button btnLogout;
         private Button btnSetting;
         private Button btnHelp;
         private Button btnUser;
         private Button btnInput;
         private Button btnDetails;
         private Label label1;
-        private Label label2;
-        private DateTimePicker dtpDate;
-        private TextBox txtStore;
-        private TextBox txtCost;
         private Label label3;
         private Label label4;
         private Label label5;
@@ -408,10 +367,11 @@
         private TextBox txtDebtPaid;
         private Button btnUpdate;
         private ComboBox cmbPeriod;
-        private ComboBox cmbType;
         private TextBox txtMonthly;
         private DateTimePicker dtpDebtTime;
         private Label label6;
         private Label label7;
+        private Button btnCosts;
+        private Button button1;
     }
 }

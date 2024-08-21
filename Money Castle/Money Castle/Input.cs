@@ -23,7 +23,6 @@ namespace Money_Castle
 
         private void Input_Load(object sender, EventArgs e)
         {
-            dtpDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
             //sets date time display to current date
             if (File.Exists(Login.UserDetailPath))
             {   // reads the user detail file and displays everything to the correct position
@@ -53,10 +52,7 @@ namespace Money_Castle
 
             string income = txtIncome.Text;
             string period = cmbPeriod.Text;
-            string date = dtpDate.Text;
-            string store = txtStore.Text;
-            string cost = txtCost.Text;
-            string type = cmbType.Text;
+
             string savingDes = txtSavingdes.Text;
             string savingAmount = txtSavingAmont.Text;
             string percent = cmbPercent.Text;
@@ -72,7 +68,6 @@ namespace Money_Castle
              * input the file location of a bank statment which is impossible with my level of skill and knowledge
              * so instead of this i have the user input it themselves
             */
-            string costs = date + "," + store + "," + cost + "," + type;
             // checks if any of the inputs are empty
             if (income == "" | savingAmount == "" | savingDes == "" | debtAmount == "" | debtDes == "" | debtPaid == "" | debtPay == "")
             {
@@ -92,24 +87,7 @@ namespace Money_Castle
             // once every thing is correct it will save it to two files 
             else
             {   // adds a entry to the costs of the user, if all three cost fields aren't empty
-                if (cost != "" && store != "" && type != "")
-                {
 
-                    if (float.TryParse(cost, out float test10))
-                    {   // if cost is a number it will save the record to the file
-                        using (TextWriter tw = new StreamWriter(Login.CostsPath, true))
-                        {
-                            tw.WriteLine(costs);
-                            worked = true;
-                            tw.Close();
-                        }
-                    }
-                    else { MessageBox.Show("please use numbers for cost"); }
-                }
-                else if (cost != "" | store != "" | type != "")
-                {
-                    MessageBox.Show("To add a cost please fill out all boxes.");
-                }
                 // if the userDetail file doesn't exist it will create one and save all the data to it
                 if (!File.Exists(Login.UserDetailPath))
                 {
@@ -173,7 +151,17 @@ namespace Money_Castle
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnCosts_Click(object sender, EventArgs e)
+        {
+            Login.raw_Data.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             Login.open(Login.login, Login.input);
+
         }
     }
 }

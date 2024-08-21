@@ -39,7 +39,6 @@
             label2 = new Label();
             lblIncome = new Label();
             lblTax = new Label();
-            button1 = new Button();
             chtDebt = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chtCost = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chtTotal = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -52,6 +51,10 @@
             label3 = new Label();
             lblNet = new Label();
             btnReload = new Button();
+            lblPaid = new Label();
+            lblDebt = new Label();
+            lblDebtPaid = new Label();
+            lblDebtotal = new Label();
             ((System.ComponentModel.ISupportInitialize)chtDebt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chtCost).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chtTotal).BeginInit();
@@ -98,27 +101,19 @@
             lblTax.Text = "tax";
             lblTax.Click += lblTax_Click;
             // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ControlText;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Image = Properties.Resources.monitoring_20dp_FILL0_wght400_GRAD0_opsz20;
-            button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(531, 749);
-            button1.Name = "button1";
-            button1.Size = new Size(191, 53);
-            button1.TabIndex = 7;
-            button1.Text = "View raw data";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // chtDebt
             // 
             chtDebt.BackColor = Color.FromArgb(64, 64, 64);
             chtDebt.BorderlineColor = Color.Black;
+            chartArea1.AxisX.LineColor = Color.White;
+            chartArea1.AxisX.TitleForeColor = Color.White;
+            chartArea1.AxisX2.TitleForeColor = Color.White;
+            chartArea1.AxisY.TitleForeColor = Color.White;
+            chartArea1.AxisY2.LineColor = Color.BlanchedAlmond;
+            chartArea1.AxisY2.TitleForeColor = Color.White;
             chartArea1.BorderColor = Color.IndianRed;
             chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = Color.Black;
             chtDebt.ChartAreas.Add(chartArea1);
             chtDebt.Location = new Point(135, 183);
             chtDebt.Name = "chtDebt";
@@ -133,6 +128,8 @@
             // chtCost
             // 
             chtCost.BackColor = Color.FromArgb(64, 64, 64);
+            chartArea2.AxisX.TitleForeColor = Color.White;
+            chartArea2.AxisY.TitleForeColor = Color.White;
             chartArea2.BackColor = Color.White;
             chartArea2.BorderColor = Color.Bisque;
             chartArea2.BorderWidth = 4;
@@ -152,6 +149,8 @@
             // chtTotal
             // 
             chtTotal.BackColor = Color.FromArgb(64, 64, 64);
+            chartArea3.AxisX.TitleForeColor = Color.White;
+            chartArea3.AxisY.TitleForeColor = Color.White;
             chartArea3.BackColor = Color.FromArgb(64, 64, 64);
             chartArea3.Name = "ChartArea1";
             chtTotal.ChartAreas.Add(chartArea3);
@@ -170,10 +169,13 @@
             // 
             btnLogout.BackColor = SystemColors.ControlText;
             btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnLogout.Location = new Point(22, 425);
+            btnLogout.ImageAlign = ContentAlignment.MiddleRight;
+            btnLogout.Location = new Point(1, 332);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(75, 61);
+            btnLogout.Size = new Size(117, 84);
             btnLogout.TabIndex = 25;
+            btnLogout.Text = "Logout";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
             btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
             // 
@@ -181,7 +183,7 @@
             // 
             btnSetting.BackColor = SystemColors.ControlText;
             btnSetting.Image = Properties.Resources.settings_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnSetting.Location = new Point(22, 341);
+            btnSetting.Location = new Point(14, 422);
             btnSetting.Name = "btnSetting";
             btnSetting.Size = new Size(75, 68);
             btnSetting.TabIndex = 24;
@@ -280,12 +282,56 @@
             btnReload.UseVisualStyleBackColor = false;
             btnReload.Click += btnReload_Click;
             // 
+            // lblPaid
+            // 
+            lblPaid.AutoSize = true;
+            lblPaid.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPaid.Location = new Point(1169, 91);
+            lblPaid.Name = "lblPaid";
+            lblPaid.Size = new Size(80, 41);
+            lblPaid.TabIndex = 32;
+            lblPaid.Text = "debt";
+            // 
+            // lblDebt
+            // 
+            lblDebt.AutoSize = true;
+            lblDebt.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDebt.Location = new Point(1169, 32);
+            lblDebt.Name = "lblDebt";
+            lblDebt.Size = new Size(80, 41);
+            lblDebt.TabIndex = 31;
+            lblDebt.Text = "debt";
+            // 
+            // lblDebtPaid
+            // 
+            lblDebtPaid.AutoSize = true;
+            lblDebtPaid.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDebtPaid.Location = new Point(946, 88);
+            lblDebtPaid.Name = "lblDebtPaid";
+            lblDebtPaid.Size = new Size(226, 46);
+            lblDebtPaid.TabIndex = 30;
+            lblDebtPaid.Text = "Debt paid off:";
+            // 
+            // lblDebtotal
+            // 
+            lblDebtotal.AutoSize = true;
+            lblDebtotal.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDebtotal.Location = new Point(1071, 29);
+            lblDebtotal.Name = "lblDebtotal";
+            lblDebtotal.Size = new Size(101, 46);
+            lblDebtotal.TabIndex = 29;
+            lblDebtotal.Text = "Debt:";
+            // 
             // View
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlText;
             ClientSize = new Size(1505, 843);
+            Controls.Add(lblPaid);
+            Controls.Add(lblDebt);
+            Controls.Add(lblDebtPaid);
+            Controls.Add(lblDebtotal);
             Controls.Add(btnReload);
             Controls.Add(lblNet);
             Controls.Add(label3);
@@ -298,7 +344,6 @@
             Controls.Add(chtTotal);
             Controls.Add(chtCost);
             Controls.Add(chtDebt);
-            Controls.Add(button1);
             Controls.Add(lblTax);
             Controls.Add(lblIncome);
             Controls.Add(label2);
@@ -322,7 +367,6 @@
         private Label label2;
         private Label lblIncome;
         private Label lblTax;
-        private Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtDebt;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtCost;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtTotal;
@@ -335,5 +379,9 @@
         private Label label3;
         private Label lblNet;
         private Button btnReload;
+        private Label lblPaid;
+        private Label lblDebt;
+        private Label lblDebtPaid;
+        private Label lblDebtotal;
     }
 }

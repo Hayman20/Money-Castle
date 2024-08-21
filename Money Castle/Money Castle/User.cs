@@ -51,7 +51,6 @@ namespace Money_Castle
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Login.open(Login.login, Login.use);
 
         }
 
@@ -112,6 +111,12 @@ namespace Money_Castle
 
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.login, Login.use);
+
         }
     }
 }

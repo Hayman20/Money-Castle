@@ -140,6 +140,16 @@ namespace Money_Castle
                 string[] line = File.ReadAllLines(Login.UserDetailPath);
                 string[] lines = line[0].Split(',');
 
+                // if the file exists it will populate the lables with the debt data from it
+
+
+                lblDebt.Text = lines[6];
+                lblPaid.Text = (lines[7]);
+
+
+
+
+
                 lblIncome.Text = lines[0] + " " + lines[1];
                 float income = float.Parse(lines[0]);
                 float total;

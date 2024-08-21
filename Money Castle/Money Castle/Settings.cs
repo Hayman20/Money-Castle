@@ -47,27 +47,32 @@ namespace Money_Castle
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Login.open(Login.login, Login.settings);
         }
 
         private void cmbColour_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // if (cmbColour.Text == "Dark Mode")
+            // if (cmbColour.Text == "Dark Mode")
             //{
-             //   Login.settings.ForeColor = Color.White;
-              //  Login.settings.BackColor = Color.Black;
+            //   Login.settings.ForeColor = Color.White;
+            //  Login.settings.BackColor = Color.Black;
             //}
             //else if (cmbColour.Text == "Light Mode")
             //{
-             // /  Login.settings.ForeColor = Color.Black;
-              // / Login.settings.BackColor = Color.White;
-               // Login.view.ForeColor = Color.Black;
-                //Login.view.BackColor = Color.White;
-           // }
+            // /  Login.settings.ForeColor = Color.Black;
+            // / Login.settings.BackColor = Color.White;
+            // Login.view.ForeColor = Color.Black;
+            //Login.view.BackColor = Color.White;
+            // }
         }
 
         private void Settings_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login.open(Login.login, Login.settings);
 
         }
     }

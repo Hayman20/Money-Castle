@@ -1,6 +1,3 @@
-07/2024,Netflix,23,Bills 
-07/2024,Netflix,23,Bills 
-07/2024,Netflix,23,Bills 
 08/2024,123,123,Bills 
 08/2024,ads,0.5,Bills 
 08/2024,netflix,1000,Entertainment

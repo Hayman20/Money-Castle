@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnLogout = new Button();
             btnSetting = new Button();
             btnHelp = new Button();
             btnUser = new Button();
@@ -42,24 +41,14 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
+            btnLogout = new Button();
             SuspendLayout();
-            // 
-            // btnLogout
-            // 
-            btnLogout.BackColor = SystemColors.ControlText;
-            btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnLogout.Location = new Point(21, 418);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(75, 62);
-            btnLogout.TabIndex = 37;
-            btnLogout.UseVisualStyleBackColor = false;
-            btnLogout.Click += btnLogout_Click;
             // 
             // btnSetting
             // 
             btnSetting.BackColor = SystemColors.ControlText;
             btnSetting.Image = Properties.Resources.settings_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnSetting.Location = new Point(21, 335);
+            btnSetting.Location = new Point(12, 417);
             btnSetting.Name = "btnSetting";
             btnSetting.Size = new Size(75, 68);
             btnSetting.TabIndex = 36;
@@ -193,12 +182,27 @@
             label8.TabIndex = 45;
             label8.Text = "For anymore enquiries please contact support at MoneyCastle@gmail.com";
             // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = SystemColors.ControlText;
+            btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            btnLogout.ImageAlign = ContentAlignment.MiddleRight;
+            btnLogout.Location = new Point(-2, 327);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(117, 84);
+            btnLogout.TabIndex = 46;
+            btnLogout.Text = "Logout";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click_1;
+            // 
             // Help
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(863, 497);
+            Controls.Add(btnLogout);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -207,7 +211,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnLogout);
             Controls.Add(btnSetting);
             Controls.Add(btnHelp);
             Controls.Add(btnUser);
@@ -222,8 +225,6 @@
         }
 
         #endregion
-
-        private Button btnLogout;
         private Button btnSetting;
         private Button btnHelp;
         private Button btnUser;
@@ -237,5 +238,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
+        private Button btnLogout;
     }
 }

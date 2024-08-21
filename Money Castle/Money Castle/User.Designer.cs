@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnLogout = new Button();
             btnSetting = new Button();
             btnHelp = new Button();
             btnUser = new Button();
@@ -48,24 +47,14 @@
             lblPercent = new Label();
             btnChange = new Button();
             btnReload = new Button();
+            button1 = new Button();
             SuspendLayout();
-            // 
-            // btnLogout
-            // 
-            btnLogout.BackColor = SystemColors.ControlText;
-            btnLogout.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnLogout.Location = new Point(21, 417);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(75, 61);
-            btnLogout.TabIndex = 37;
-            btnLogout.UseVisualStyleBackColor = false;
-            btnLogout.Click += btnLogout_Click;
             // 
             // btnSetting
             // 
             btnSetting.BackColor = SystemColors.ControlText;
             btnSetting.Image = Properties.Resources.settings_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
-            btnSetting.Location = new Point(21, 333);
+            btnSetting.Location = new Point(12, 413);
             btnSetting.Name = "btnSetting";
             btnSetting.Size = new Size(75, 68);
             btnSetting.TabIndex = 36;
@@ -271,12 +260,27 @@
             btnReload.UseVisualStyleBackColor = false;
             btnReload.Click += btnReload_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ControlText;
+            button1.Image = Properties.Resources.logout_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20;
+            button1.ImageAlign = ContentAlignment.MiddleRight;
+            button1.Location = new Point(-1, 323);
+            button1.Name = "button1";
+            button1.Size = new Size(117, 84);
+            button1.TabIndex = 57;
+            button1.Text = "Logout";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // User
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 493);
+            Controls.Add(button1);
             Controls.Add(btnReload);
             Controls.Add(btnChange);
             Controls.Add(lblPercent);
@@ -291,7 +295,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnLogout);
             Controls.Add(btnSetting);
             Controls.Add(btnHelp);
             Controls.Add(btnUser);
@@ -306,8 +309,6 @@
         }
 
         #endregion
-
-        private Button btnLogout;
         private Button btnSetting;
         private Button btnHelp;
         private Button btnUser;
@@ -327,5 +328,6 @@
         private Label lblPercent;
         private Button btnChange;
         private Button btnReload;
+        private Button button1;
     }
 }
